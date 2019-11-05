@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.chenweiqin.com/"/>
-  <updated>2019-11-05T08:50:31.755Z</updated>
+  <updated>2019-11-05T15:24:38.806Z</updated>
   <id>http://www.chenweiqin.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>blogn1</title>
+    <link href="http://www.chenweiqin.com/2019/11/05/blogn1/"/>
+    <id>http://www.chenweiqin.com/2019/11/05/blogn1/</id>
+    <published>2019-11-05T15:24:13.000Z</published>
+    <updated>2019-11-05T15:24:38.806Z</updated>
+    
+    <content type="html"><![CDATA[<p>44353tsfs</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;44353tsfs&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+    
+    
+      <category term="linux" scheme="http://www.chenweiqin.com/tags/linux/"/>
+    
+  </entry>
   
   <entry>
     <title>new3</title>
@@ -391,9 +416,9 @@
     
       <category term="linux" scheme="http://www.chenweiqin.com/tags/linux/"/>
     
-      <category term="opencv" scheme="http://www.chenweiqin.com/tags/opencv/"/>
-    
       <category term="ubuntu" scheme="http://www.chenweiqin.com/tags/ubuntu/"/>
+    
+      <category term="opencv" scheme="http://www.chenweiqin.com/tags/opencv/"/>
     
       <category term="vim" scheme="http://www.chenweiqin.com/tags/vim/"/>
     
