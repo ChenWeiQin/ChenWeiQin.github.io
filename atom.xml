@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.chenweiqin.com/"/>
-  <updated>2019-11-05T15:24:38.806Z</updated>
+  <updated>2019-11-05T15:36:42.805Z</updated>
   <id>http://www.chenweiqin.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>blog34</title>
+    <link href="http://www.chenweiqin.com/2019/11/05/blog34/"/>
+    <id>http://www.chenweiqin.com/2019/11/05/blog34/</id>
+    <published>2019-11-05T15:36:19.000Z</published>
+    <updated>2019-11-05T15:36:42.805Z</updated>
+    
+    <content type="html"><![CDATA[<p>yruuuuuuuuuuuuuuuuuuuu</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;yruuuuuuuuuuuuuuuuuuuu&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+    
+    
+      <category term="linux" scheme="http://www.chenweiqin.com/tags/linux/"/>
+    
+  </entry>
   
   <entry>
     <title>blogn1</title>
