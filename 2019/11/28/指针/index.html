@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>指针 | Weiqin&#39;Blog | I can accept failure, but I cannot accept giving up.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="指针,设计模式">
+    <meta name="description" content="什么是指针2018年10月25日 - 此系列文章我们开始聊一些软件开发人员如何开始动手写一些自己项目(Side Project)的思路与方法,以及过程中可能需要准备的知识,并分享一些相关的资源给.. 指针与数组女女2018年10月25日 - 此系列文章我们开始聊一些软件开发人员如何开始动手写一些自己项目(Side Project)的思路与方法,以及过程中可能需要准备的知识,并分享一些相关的资源给…">
+<meta name="keywords" content="指针,设计模式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="指针">
+<meta property="og:url" content="http:&#x2F;&#x2F;www.chenweiqin.com&#x2F;2019&#x2F;11&#x2F;28&#x2F;%E6%8C%87%E9%92%88&#x2F;index.html">
+<meta property="og:site_name" content="Weiqin&#39;Blog">
+<meta property="og:description" content="什么是指针2018年10月25日 - 此系列文章我们开始聊一些软件开发人员如何开始动手写一些自己项目(Side Project)的思路与方法,以及过程中可能需要准备的知识,并分享一些相关的资源给.. 指针与数组女女2018年10月25日 - 此系列文章我们开始聊一些软件开发人员如何开始动手写一些自己项目(Side Project)的思路与方法,以及过程中可能需要准备的知识,并分享一些相关的资源给…">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http:&#x2F;&#x2F;www.chenweiqin.com&#x2F;img&#x2F;c&#x2F;ss.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;www.chenweiqin.com&#x2F;img&#x2F;c&#x2F;tt.jpg">
+<meta property="og:updated_time" content="2019-11-28T01:37:34.734Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;www.chenweiqin.com&#x2F;img&#x2F;c&#x2F;ss.jpg">
+    
+        <link rel="alternate" type="application/atom+xml" title="Weiqin&#39;Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off" target="_self">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">陈维勤</h5>
+          <a href="mailto:1018482308@qq.com" target="_blank" rel="noopener" title="1018482308@qq.com" class="mail">1018482308@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+				<i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/"  >
+				<i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/"  >
+				<i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+				<i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+				<i class="icon icon-lg icon-user"></i>
+                About
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" target="_blank" rel="noopener" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">指针</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" target="_blank" rel="noopener" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search" target="_self">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare" target="_self">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">指针</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-11-27T22:34:21.000Z" itemprop="datePublished" class="page-time">
+  2019-11-28
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/c/">c</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/c/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/c/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/c/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E6%95%B0%E6%8D%AE%E5%BA%93/php/">php</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/c/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E6%95%B0%E6%8D%AE%E5%BA%93/php/c/">c++</a></li></ul></li></ul></li></ul></li></ul></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#什么是指针"><span class="post-toc-number">1.</span> <span class="post-toc-text">什么是指针</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#指针与数组"><span class="post-toc-number">2.</span> <span class="post-toc-text">指针与数组</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#女女"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">女女</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#男田男国国"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">男田男国国</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#指针作为返回值"><span class="post-toc-number">3.</span> <span class="post-toc-text">指针作为返回值</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-指针"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">指针</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-11-28 06:34:21" datetime="2019-11-27T22:34:21.000Z"  itemprop="datePublished">2019-11-28</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/c/">c</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/c/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/c/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/c/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E6%95%B0%E6%8D%AE%E5%BA%93/php/">php</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/c/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E6%95%B0%E6%8D%AE%E5%BA%93/php/c/">c++</a></li></ul></li></ul></li></ul></li></ul></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="什么是指针"><a href="#什么是指针" class="headerlink" title="什么是指针"></a>什么是指针</h1><p>2018年10月25日 - 此系列文章我们开始聊一些软件开发人员如何开始动手写一些自己项目(<em>Side</em> <em>Project</em>)的思路与方法,以及过程中可能需要准备的知识,并分享一些相关的资源给..</p>
+<h1 id="指针与数组"><a href="#指针与数组" class="headerlink" title="指针与数组"></a>指针与数组</h1><h2 id="女女"><a href="#女女" class="headerlink" title="女女"></a>女女</h2><p>2018年10月25日 - 此系列文章我们开始聊一些软件开发人员如何开始动手写一些自己项目(<em>Side</em> <em>Project</em>)的思路与方法,以及过程中可能需要准备的知识,并分享一些相关的资源给…</p>
+<h2 id="男田男国国"><a href="#男田男国国" class="headerlink" title="男田男国国"></a>男田男国国</h2><p>2018年10月25日 - 此系列文章我们开始聊一些软件开发人员如何开始动手写一些自己项目(<em>Side</em> <em>Project</em>)的思路与方法,以及过程中可能需要准备的知识,并分享一些相关的资源给…</p>
+<h1 id="指针作为返回值"><a href="#指针作为返回值" class="headerlink" title="指针作为返回值"></a>指针作为返回值</h1><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="\img\c\ss.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="\img\c\tt.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+
+
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2019-11-28T01:37:34.734Z" itemprop="dateUpdated">2019-11-28 09:37:34</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2019/11/28/%E6%8C%87%E9%92%88/" target="_blank" rel="external">http://www.chenweiqin.com/2019/11/28/%E6%8C%87%E9%92%88/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://www.chenweiqin.com">
+            <img src="/img/avatar.jpg" alt="陈维勤">
+            陈维勤
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light" target="_self">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8C%87%E9%92%88/" rel="tag">指针</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.chenweiqin.com/2019/11/28/%E6%8C%87%E9%92%88/&title=《指针》 — Weiqin'Blog&pic=http://www.chenweiqin.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信" target="_self">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.chenweiqin.com/2019/11/28/%E6%8C%87%E9%92%88/&title=《指针》 — Weiqin'Blog&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.chenweiqin.com/2019/11/28/%E6%8C%87%E9%92%88/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《指针》 — Weiqin'Blog&url=http://www.chenweiqin.com/2019/11/28/%E6%8C%87%E9%92%88/&via=http://www.chenweiqin.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.chenweiqin.com/2019/11/28/%E6%8C%87%E9%92%88/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle" target="_self">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/11/28/test8900/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">test8900</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;" target="_self"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+   <div class="top">
+        <!--
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+ -->
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license noopener" href="https://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+
+    <div class="bottom">
+        <p><span>陈维勤 &copy; 2015 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light" target="_self"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.chenweiqin.com/2019/11/28/%E6%8C%87%E9%92%88/&title=《指针》 — Weiqin'Blog&pic=http://www.chenweiqin.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信" target="_self">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.chenweiqin.com/2019/11/28/%E6%8C%87%E9%92%88/&title=《指针》 — Weiqin'Blog&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.chenweiqin.com/2019/11/28/%E6%8C%87%E9%92%88/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《指针》 — Weiqin'Blog&url=http://www.chenweiqin.com/2019/11/28/%E6%8C%87%E9%92%88/&via=http://www.chenweiqin.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.chenweiqin.com/2019/11/28/%E6%8C%87%E9%92%88/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" target="_self"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACNElEQVR42u3auxKDMAxEUf7/p8lMKgpsdleQCfKlyiQEfCiEHt42+di/x/Hz8RidPzpn9Ov8mjccMGDAeC1jnx4uQ+GNzpx/c/H4YMCAsQDDvaXyIEbX0R+NsjYYMGDAGJ2jfKNncfOACwMGDBiVNG5OytJEGDBgwKgUscptsmacnjLeUIvDgAHjhYxsMPCbz4/PN2DAgPH3jN08sv+6Ra+9KhgwYLRmZDdwb+mWr1kDDgYMGF0ZShLmtsDcUlMviYcrhwEDxpIMZRF6m0xvw7kVKwwYMFZgKEFNL2Xd8Wc2frgoYmHAgNGO4S5OaejrLf6scIUBA8ZqDHfLlwJ2kz83yF6UsjBgwGjH0BeRNf3dgWVYQsOAAaM1o3IDN0zrmzCy9BEGDBi9GW4KmCV/2ZlusggDBox+DLdZHwZBMwW0t1/AgAGjNcPoyZklbralrLKZAwYMGOswlILziQGn2/KT6l0YMGA0YrgFZ2UrWBZS3WEDDBgwujKyxbmbM9yxgb3hDAYMGO0Y2YawSqgN3wPuGwAGDBjtGNk5yiYJfTOHHnBPrgwDBozWDLe8DIeLbpYaldAwYMDoytjNI2v9uwMG5deT9wYMGDCaMrI6MVt6pcF3W8iGAQPGaxlZkM0CsTt+MJ49DBgwFmA8PWisDwPmeBgwYMBwt4spKaNexErBFwYMGDCippiy6MqmkBsCLgwYMF7FyMJltqBK4ngxiYUBA0ZTRuX2+qWzlFH5FwwYMFozPqBVYL7c+YdjAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'php -爱生活,爱技术！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'php -爱生活,爱技术！';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
