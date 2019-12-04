@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.chenweiqin.com/"/>
-  <updated>2019-11-29T02:48:02.215Z</updated>
+  <updated>2019-12-04T02:52:28.382Z</updated>
   <id>http://www.chenweiqin.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>内存管理</title>
+    <link href="http://www.chenweiqin.com/2019/12/03/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/"/>
+    <id>http://www.chenweiqin.com/2019/12/03/内存管理/</id>
+    <published>2019-12-03T02:57:19.000Z</published>
+    <updated>2019-12-04T02:52:28.382Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><h2 id="内在分布"><a href="#内在分布" class="headerlink" title="内在分布"></a>内在分布</h2><h2 id="动态操作内存"><a href="#动态操作内存" class="headerlink" title="动态操作内存"></a>动态操作内存</h2><h3 id="堆区内存分配和释放"><a href="#堆区内存分配和释放" class="headerlink" title="堆区内存分配和释放"></a>堆区内存分配和释放</h3><ol><li><p>malloc() </p><blockquote><p>vaoid *malloc(int size)</p><p>功能：在内存的动态存储区（堆区）中申请一块长度为size字节的连续区域</p><p>参数：size 需要申请内存大小(单位：字节)</p><p>返回值：注意如果当前内存不够的情况下有可能申请不成功，如果成功返回首地址（指针），失败返回NULL </p><p>注意事项：使用后必须进行内存回收，即malloc与free函数成对使用，对申请到内存空间进行及时释放，防止内存溢出 </p></blockquote><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> * <span class="built_in">array</span>;</span><br><span class="line"><span class="built_in">array</span> = (<span class="keyword">int</span> *) malloca(<span class="keyword">sizeof</span>(<span class="keyword">int</span>)*<span class="number">10</span>);<span class="comment">//申请到一块连续内存大小为:4*10=40字节</span></span><br><span class="line"><span class="keyword">if</span>(<span class="built_in">array</span> == <span class="literal">NULL</span>)&#123; <span class="comment">//必须判断是否申请成功</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"申请空间失败\n"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//对申请的内存空间进行初始化操作</span></span><br><span class="line"><span class="built_in">memset</span>(<span class="built_in">array</span>,<span class="number">0</span>,<span class="keyword">sizeof</span>(<span class="keyword">int</span>)*<span class="number">10</span>);<span class="comment">//把申请内存空间上的每个字节都重置为0</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//对申请到空间进行赋值操作</span></span><br><span class="line"><span class="keyword">int</span> i;</span><br><span class="line"><span class="keyword">for</span>(i=<span class="number">0</span>; i&lt; <span class="number">10</span>;i++)&#123;</span><br><span class="line">    <span class="built_in">array</span>[i] = i;<span class="comment">//在申请成功赋值给了int*类型指针，所有在这里可以用下标或者指针方式进行赋值操作</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//读取结果</span></span><br><span class="line"><span class="keyword">for</span>(i=<span class="number">0</span>;i&lt; <span class="number">10</span>; i++)&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,<span class="built_in">array</span>[i]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//使用后记得释放,防止内存溢出</span></span><br><span class="line"><span class="built_in">free</span>(<span class="built_in">array</span>);</span><br></pre></td></tr></table></figure></li></ol><ol start="2"><li><p>free()</p><blockquote><p>void free(void * p)</p><p>功能：释放p所指向的那一块内存空间，为释放区域的首地址，对同一个内存空间多次释放会报错</p><p>参数：p为释放空间的首地址</p><p>返回值：无</p></blockquote></li><li><p>memset()</p><blockquote><p>void *memset(void *s ,int value, int sizse)</p><p>功能：将以s为首地址重置为值为value,重置长度为size,特别说明size单位为字节</p><p>参数：</p><p>s : 操作的首地址</p><p>value: 把指定长度上的每个字节都重置为value，（一个字节占8位，所有value范围为0~255 　一般使用值0）</p><p>size:要重置的长度（字节数）</p></blockquote><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a[<span class="number">10</span>];</span><br><span class="line"><span class="built_in">memset</span>(a,<span class="number">0</span>,<span class="keyword">sizeof</span>(a));<span class="comment">//把里面每个字节都重置为0</span></span><br><span class="line"><span class="keyword">char</span> * str = (<span class="keyword">char</span> *) <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">char</span>)*<span class="number">10</span>);</span><br><span class="line"><span class="built_in">memset</span>(str,<span class="number">96</span>,<span class="number">10</span>);<span class="comment">//即重置为了"AAAAAAAAAA"</span></span><br><span class="line"><span class="built_in">free</span>(str);</span><br></pre></td></tr></table></figure></li><li><p>memcpy()</p><blockquote><p>void * memcpy(void * dest,const void * src, int size);</p><p>功能：拷贝src所指向内存内容前n个字节到dest所指的内存地址中</p><p>参数：</p><p>dest: 目的内存首地址</p><p>src: 源内存的首地址，注意:dest与src所指的内存空间不能重叠</p><p>size : 拷贝的字节数</p><p>返回值：dest 的首地址</p></blockquote><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a[<span class="number">5</span>] = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;;</span><br><span class="line"><span class="keyword">int</span> b[<span class="number">5</span>];</span><br><span class="line"><span class="built_in">memcpy</span>(b,a,<span class="keyword">sizeof</span>(a));<span class="comment">//把a数组中内容复制一份到b中</span></span><br></pre></td></tr></table></figure></li><li><p>memmove()</p><blockquote><p>功能与memcpy一样，区别于dest和src的所指向的内存空间出现重叠时，memmove仍然能执行，它执行效率比memcpy低</p></blockquote></li><li><p>memcmp()</p><blockquote><p>int memcmp(const void * s1,const void * s2, int size);</p><p>功能：比较s1和s2所指向内存区域的前size个字节</p><p>参数：</p><p>　s1:内存首地址１</p><p>　s2:内存首地址２</p><p>　size: 要比较的前多少个字节</p><p>返回值：</p><p>如果比较结果值相等:返回0, 大于:返回的值为&gt;0, 小于：返回的值为&lt;0</p></blockquote></li><li><p>calloc ()</p><blockquote><p>功能：分配空间并清空，等同于malloc + memset</p></blockquote></li><li><p>realloc()</p><blockquote><p>功能：重新分配内存空间，用于扩展和缩小空间</p><p>参数说明：</p><p>第一参数　　　　第二个参数　　　　　　行为</p><p>空　　　　　　　　无　　　　　　　　　同malloc</p><p>非空　　　　　　　０　　　　　　　　　原内存块被释放</p><p>非空　　　　　　　比原内存块小　　　　利用当前位置分配更小的内存块</p><p>非空　　　　　　　比原内存块大　　　　利用当前位置分配更大的内存块</p></blockquote></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;作用域&quot;&gt;&lt;a href=&quot;#作用域&quot; class=&quot;headerlink&quot; title=&quot;作用域&quot;&gt;&lt;/a&gt;作用域&lt;/h2&gt;&lt;h2 id=&quot;内在分布&quot;&gt;&lt;a href=&quot;#内在分布&quot; class=&quot;headerlink&quot; title=&quot;内在分布&quot;&gt;&lt;/a&gt;内在分
+      
+    
+    </summary>
+    
+    
+      <category term="C" scheme="http://www.chenweiqin.com/categories/C/"/>
+    
+    
+      <category term="C基础" scheme="http://www.chenweiqin.com/tags/C%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
   
   <entry>
     <title>指针</title>
