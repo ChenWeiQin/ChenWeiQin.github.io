@@ -21,16 +21,18 @@
     
     
     <meta name="keywords" content="C基础">
-    <meta name="description" content="作用域内在分布动态操作内存堆区内存分配和释放 malloc()   vaoid *malloc(int size) 功能：在内存的动态存储区（堆区）中申请一块长度为size字节的连续区域 参数：size 需要申请内存大小(单位：字节) 返回值：注意如果当前内存不够的情况下有可能申请不成功，如果成功返回首地址（指针），失败返回NULL  注意事项：使用后必须进行内存回收，即malloc与free函数">
+    <meta name="description" content="作用域变量作用域 一 、C语言的变量作用域分为：  代码块作用域（代码块作用域就是在{}之间的代码） 函数作用域 文件作用域  二、如果按作用范围分则分为：  局部变量  局部变量分划分为静态与非静态局部变量 1.1 非静态局部变量（也称之为auto自动变量，auto可以省略不写）   在函数内定义，只在函数范围内有效 在复合语句中定义，只在复合语句中有效（如:if(){&#x2F;&#x2F;在这里定义了变量只在这">
 <meta name="keywords" content="C基础">
 <meta property="og:type" content="article">
 <meta property="og:title" content="内存管理">
 <meta property="og:url" content="http:&#x2F;&#x2F;www.chenweiqin.com&#x2F;2019&#x2F;12&#x2F;03&#x2F;%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86&#x2F;index.html">
 <meta property="og:site_name" content="Weiqin&#39;Blog">
-<meta property="og:description" content="作用域内在分布动态操作内存堆区内存分配和释放 malloc()   vaoid *malloc(int size) 功能：在内存的动态存储区（堆区）中申请一块长度为size字节的连续区域 参数：size 需要申请内存大小(单位：字节) 返回值：注意如果当前内存不够的情况下有可能申请不成功，如果成功返回首地址（指针），失败返回NULL  注意事项：使用后必须进行内存回收，即malloc与free函数">
+<meta property="og:description" content="作用域变量作用域 一 、C语言的变量作用域分为：  代码块作用域（代码块作用域就是在{}之间的代码） 函数作用域 文件作用域  二、如果按作用范围分则分为：  局部变量  局部变量分划分为静态与非静态局部变量 1.1 非静态局部变量（也称之为auto自动变量，auto可以省略不写）   在函数内定义，只在函数范围内有效 在复合语句中定义，只在复合语句中有效（如:if(){&#x2F;&#x2F;在这里定义了变量只在这">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-12-04T02:52:28.382Z">
+<meta property="og:image" content="http:&#x2F;&#x2F;www.chenweiqin.com&#x2F;img&#x2F;c&#x2F;size_file.jpg">
+<meta property="og:updated_time" content="2019-12-09T09:15:55.570Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;www.chenweiqin.com&#x2F;img&#x2F;c&#x2F;size_file.jpg">
     
         <link rel="alternate" type="application/atom+xml" title="Weiqin&#39;Blog" href="/atom.xml">
     
@@ -158,7 +160,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#作用域"><span class="post-toc-number">1.</span> <span class="post-toc-text">作用域</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#内在分布"><span class="post-toc-number">2.</span> <span class="post-toc-text">内在分布</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#动态操作内存"><span class="post-toc-number">3.</span> <span class="post-toc-text">动态操作内存</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#堆区内存分配和释放"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">堆区内存分配和释放</span></a></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#作用域"><span class="post-toc-number">1.</span> <span class="post-toc-text">作用域</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#变量作用域"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">变量作用域</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#函数作用域"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">函数作用域</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#内存分区"><span class="post-toc-number">2.</span> <span class="post-toc-text">内存分区</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#内存分区的意义"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">内存分区的意义</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#动态操作内存"><span class="post-toc-number">3.</span> <span class="post-toc-text">动态操作内存</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#内存操作常见函数"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">内存操作常见函数</span></a></li></ol></li></ol>
         </nav>
     </aside>
 
@@ -184,7 +186,103 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><h2 id="内在分布"><a href="#内在分布" class="headerlink" title="内在分布"></a>内在分布</h2><h2 id="动态操作内存"><a href="#动态操作内存" class="headerlink" title="动态操作内存"></a>动态操作内存</h2><h3 id="堆区内存分配和释放"><a href="#堆区内存分配和释放" class="headerlink" title="堆区内存分配和释放"></a>堆区内存分配和释放</h3><ol>
+            <h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><h3 id="变量作用域"><a href="#变量作用域" class="headerlink" title="变量作用域"></a>变量作用域</h3><blockquote>
+<p>一 、C语言的变量作用域分为：</p>
+<ol>
+<li>代码块作用域（代码块作用域就是在{}之间的代码）</li>
+<li>函数作用域</li>
+<li>文件作用域</li>
+</ol>
+<p>二、如果按作用范围分则分为：</p>
+<ol>
+<li><p>局部变量</p>
+<blockquote>
+<p>局部变量分划分为静态与非静态局部变量</p>
+<p>1.1 非静态局部变量（也称之为auto自动变量，auto可以省略不写）</p>
+<blockquote>
+<ul>
+<li>在函数内定义，只在函数范围内有效</li>
+<li>在复合语句中定义，只在复合语句中有效（如:if(){//在这里定义了变量只在这里生效}）</li>
+<li>随着函数调用的结束或复合语句的结束局部变量的生命周期也结束</li>
+<li>如果没有赋初始值，则系统随机分配值（即垃圾值）</li>
+</ul>
+</blockquote>
+<p>  1.2 静态局部变量（使用static进行修饰）</p>
+<blockquote>
+<ul>
+<li><p>static 局部变量的作用域也是在所定义的函数内生效</p>
+</li>
+<li><p>static 局部变量的生命周期和程序运行周期一样</p>
+</li>
+<li><p>static 局部变量只能被初始化一次，但可以多次赋值</p>
+</li>
+<li><p>static 局部变量没有赋以初值时，系统则会对int型赋上0，字符型变量赋空字符串 </p>
+</li>
+</ul>
+</blockquote>
+</blockquote>
+</li>
+<li><p>全局变量</p>
+<blockquote>
+<p>全局变量同样可以划分为静态与非静态全局变量</p>
+<p>2.1 非静态全局变量</p>
+<blockquote>
+<ul>
+<li><p>在函数外定义，可被本文件及其它文件中的函数所共用，若其它文件中的函数调用此变量，须用extern 声明</p>
+</li>
+<li><p>全局变量的生命周期和程序运行同期一样</p>
+</li>
+<li><p>不同文件的局部变量不同重名</p>
+</li>
+</ul>
+</blockquote>
+<p>2.2 静态全局变量</p>
+<blockquote>
+<ul>
+<li>在函数外定义，作用范围被限制在所定义的文件中</li>
+<li>不同的文件静态全局变量可以重名，便作用域不冲突</li>
+<li>生命与程序运行周期一样，同时也只能被初始化一次</li>
+</ul>
+</blockquote>
+</blockquote>
+</li>
+</ol>
+</blockquote>
+<h3 id="函数作用域"><a href="#函数作用域" class="headerlink" title="函数作用域"></a>函数作用域</h3><blockquote>
+<p>把C言语中函数可以划分为静态与非静态全局函数，因为在C语言中函数默认是全局的，使用了static修饰后称之为静态全局函数。</p>
+<ol>
+<li>静态全局函数</li>
+</ol>
+<blockquote>
+<ul>
+<li>此函数只能在当前文件中使用，不能别的文件中使用</li>
+<li>不同的文件名中如果是静态函数文件名是可以相同的</li>
+</ul>
+</blockquote>
+</blockquote>
+<p>小结一下：</p>
+<blockquote>
+<ul>
+<li>允许在不同的函数中使用相同的变量名，它们代表不同的对象，分配不同的单元，互不干扰。</li>
+<li>同一源文件中,允许全局变量和局部变量同名，在局部变量的作用域内，全局变量不起作用。</li>
+<li>所有的函数默认都是全局的，意味着所有的函数都不能重名，但如果是staitc函数，那么作用域是文件级的，所以不同的文件static函数名是可以相同的。</li>
+</ul>
+</blockquote>
+<h2 id="内存分区"><a href="#内存分区" class="headerlink" title="内存分区"></a>内存分区</h2><h3 id="内存分区的意义"><a href="#内存分区的意义" class="headerlink" title="内存分区的意义"></a>内存分区的意义</h3><blockquote>
+<p>将程序中不同的数据存放在不同的区域中（分区中），赋予它们不同的生命周期，给编程带来更大的灵活性。搞清楚每个区存放的数据时有什么特点，各种变量类型分别存放在那些分区中。不然在编写函数过程中往往接收不到函数的返回值，因为你接收的数据是存放在栈区，而函数调用结束后，由系统自动回收栈中的资源，有时在定义一个比较的数组时程序会报错，这是因为栈区的大小是固定的不能存比较大的数据。</p>
+<p>阅读一个程序在内存中分区模型为会两种，一种是程序未执行时，另一种是当程序执行起来时，为什么可以这样划分？因为一个程序编译完成如果将这个程序运行起来在内存占的数据大小的是固定的（因为这些数据能预测出来），如（这个程序所有的指令长，静态数据/全局初始化数据/未初始数据），特点说明真正占用存内空间还是等到程序起来。还是数据只有程序真正运行起来才能知道占用内存的数据（如开辟了多个栈空间，申请了多少堆内存）</p>
+<p>程序未执行时：一个c程序经过 预处理 编译 汇编 链接 4步后生成可执行文件。可能通过size 命令看到相关的信息。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="\img\c\size_file.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>通过上图得知，在没有运行程序前，也就是程序没有加载到内存前，可执行程序程序内部分好3区信息，分别为代码区（text）、数据区（data）和示</p>
+</blockquote>
+<h2 id="动态操作内存"><a href="#动态操作内存" class="headerlink" title="动态操作内存"></a>动态操作内存</h2><h3 id="内存操作常见函数"><a href="#内存操作常见函数" class="headerlink" title="内存操作常见函数"></a>内存操作常见函数</h3><ol>
 <li><p>malloc() </p>
 <blockquote>
 <p>vaoid *malloc(int size)</p>
@@ -273,7 +371,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2019-12-04T02:52:28.382Z" itemprop="dateUpdated">2019-12-04 10:52:28</time>
+    Last updated: <time datetime="2019-12-09T09:15:55.570Z" itemprop="dateUpdated">2019-12-09 17:15:55</time>
 </span><br>
 
 
