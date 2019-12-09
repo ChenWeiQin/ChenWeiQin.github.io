@@ -30,7 +30,8 @@
 <meta property="og:description" content="作用域变量作用域 一 、C语言的变量作用域分为：  代码块作用域（代码块作用域就是在{}之间的代码） 函数作用域 文件作用域  二、如果按作用范围分则分为：  局部变量  局部变量分划分为静态与非静态局部变量 1.1 非静态局部变量（也称之为auto自动变量，auto可以省略不写）   在函数内定义，只在函数范围内有效 在复合语句中定义，只在复合语句中有效（如:if(){&#x2F;&#x2F;在这里定义了变量只在这">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http:&#x2F;&#x2F;www.chenweiqin.com&#x2F;img&#x2F;c&#x2F;size_file.jpg">
-<meta property="og:updated_time" content="2019-12-09T09:15:55.570Z">
+<meta property="og:image" content="http:&#x2F;&#x2F;www.chenweiqin.com&#x2F;img&#x2F;c&#x2F;mem_divjpg.jpg">
+<meta property="og:updated_time" content="2019-12-09T16:05:01.961Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http:&#x2F;&#x2F;www.chenweiqin.com&#x2F;img&#x2F;c&#x2F;size_file.jpg">
     
@@ -160,7 +161,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#作用域"><span class="post-toc-number">1.</span> <span class="post-toc-text">作用域</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#变量作用域"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">变量作用域</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#函数作用域"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">函数作用域</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#内存分区"><span class="post-toc-number">2.</span> <span class="post-toc-text">内存分区</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#内存分区的意义"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">内存分区的意义</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#动态操作内存"><span class="post-toc-number">3.</span> <span class="post-toc-text">动态操作内存</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#内存操作常见函数"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">内存操作常见函数</span></a></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#作用域"><span class="post-toc-number">1.</span> <span class="post-toc-text">作用域</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#变量作用域"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">变量作用域</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#函数作用域"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">函数作用域</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#内存分区"><span class="post-toc-number">2.</span> <span class="post-toc-text">内存分区</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#内存分区的意义"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">内存分区的意义</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#划分内存四区模型"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">划分内存四区模型</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#动态操作内存"><span class="post-toc-number">3.</span> <span class="post-toc-text">动态操作内存</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#内存操作常见函数"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">内存操作常见函数</span></a></li></ol></li></ol>
         </nav>
     </aside>
 
@@ -271,7 +272,7 @@
 <h2 id="内存分区"><a href="#内存分区" class="headerlink" title="内存分区"></a>内存分区</h2><h3 id="内存分区的意义"><a href="#内存分区的意义" class="headerlink" title="内存分区的意义"></a>内存分区的意义</h3><blockquote>
 <p>将程序中不同的数据存放在不同的区域中（分区中），赋予它们不同的生命周期，给编程带来更大的灵活性。搞清楚每个区存放的数据时有什么特点，各种变量类型分别存放在那些分区中。不然在编写函数过程中往往接收不到函数的返回值，因为你接收的数据是存放在栈区，而函数调用结束后，由系统自动回收栈中的资源，有时在定义一个比较的数组时程序会报错，这是因为栈区的大小是固定的不能存比较大的数据。</p>
 <p>阅读一个程序在内存中分区模型为会两种，一种是程序未执行时，另一种是当程序执行起来时，为什么可以这样划分？因为一个程序编译完成如果将这个程序运行起来在内存占的数据大小的是固定的（因为这些数据能预测出来），如（这个程序所有的指令长，静态数据/全局初始化数据/未初始数据），特点说明真正占用存内空间还是等到程序起来。还是数据只有程序真正运行起来才能知道占用内存的数据（如开辟了多个栈空间，申请了多少堆内存）</p>
-<p>程序未执行时：一个c程序经过 预处理 编译 汇编 链接 4步后生成可执行文件。可能通过size 命令看到相关的信息。</p>
+<p><span style="color:red">程序未执行时</span>：一个c程序经过 预处理 编译 汇编 链接 4步后生成可执行文件。可能通过size 命令看到相关的信息。</p>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
@@ -280,7 +281,17 @@
                 <div class="image-caption"></div>
             </figure>
 
-<p>通过上图得知，在没有运行程序前，也就是程序没有加载到内存前，可执行程序程序内部分好3区信息，分别为代码区（text）、数据区（data）和示</p>
+<p>通过上图得知，在没有运行程序前，也就是程序没有加载到内存前，可执行程序程序内部分好3区信息，分别为代码区（text）、数据区（data）和未初始化数据区（bss）3个分区（有些人直接把data和bss合起来叫做静态区或全局区）</p>
+<p><span style="color:red">程序加载到内存时</span>：代码区和全局区（data与bss）的大小就是固定不变的，当程序运行起来后，多了2个分区，分别是栈区与堆区</p>
+</blockquote>
+<h3 id="划分内存四区模型"><a href="#划分内存四区模型" class="headerlink" title="划分内存四区模型"></a>划分内存四区模型</h3><blockquote>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="\img\c\mem_divjpg.jpg" alt="mem_divjpg" title="">
+                </div>
+                <div class="image-caption">mem_divjpg</div>
+            </figure>
 </blockquote>
 <h2 id="动态操作内存"><a href="#动态操作内存" class="headerlink" title="动态操作内存"></a>动态操作内存</h2><h3 id="内存操作常见函数"><a href="#内存操作常见函数" class="headerlink" title="内存操作常见函数"></a>内存操作常见函数</h3><ol>
 <li><p>malloc() </p>
@@ -371,7 +382,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2019-12-09T09:15:55.570Z" itemprop="dateUpdated">2019-12-09 17:15:55</time>
+    Last updated: <time datetime="2019-12-09T16:05:01.961Z" itemprop="dateUpdated">2019-12-10 00:05:01</time>
 </span><br>
 
 
