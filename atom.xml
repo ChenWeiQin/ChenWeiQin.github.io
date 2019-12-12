@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.chenweiqin.com/"/>
-  <updated>2019-12-12T06:32:51.006Z</updated>
+  <updated>2019-12-12T09:03:50.619Z</updated>
   <id>http://www.chenweiqin.com/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>sizeof的用法及与strlen比较</title>
+    <link href="http://www.chenweiqin.com/2019/12/12/sizeof%E7%9A%84%E7%94%A8%E6%B3%95%E5%8F%8A%E4%B8%8Estrlen%E6%AF%94%E8%BE%83/"/>
+    <id>http://www.chenweiqin.com/2019/12/12/sizeof的用法及与strlen比较/</id>
+    <published>2019-12-12T08:32:03.000Z</published>
+    <updated>2019-12-12T09:03:50.619Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="sizeof与strlen比较"><a href="#sizeof与strlen比较" class="headerlink" title="sizeof与strlen比较"></a>sizeof与strlen比较</h2><blockquote><ol><li><p>相同点：</p><p>返回值都以字节为单位,<span style="color:red">无符号整型值</span>,为什么要强调这一点，当无符号整型与有符号整型进行运行时，一般会返回无符号值，在下面会举例说明。</p></li><li><p>不同点：</p><p>sizeof是运算符，会计算出变量类型所占的大小或变量实际占用大小，而strlen是函数返回字符串有效的长度，而不会加上\0，即字符串结束符。</p></li></ol><blockquote><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"> <span class="keyword">char</span> str[] = <span class="string">"hello"</span>;</span><br><span class="line"> <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,<span class="keyword">sizeof</span>(str));<span class="comment">//6</span></span><br><span class="line"> <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,<span class="built_in">strlen</span>(str));<span class="comment">//5 因为不没有把\0计算进来</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></blockquote></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;sizeof与strlen比较&quot;&gt;&lt;a href=&quot;#sizeof与strlen比较&quot; class=&quot;headerlink&quot; title=&quot;sizeof与strlen比较&quot;&gt;&lt;/a&gt;sizeof与strlen比较&lt;/h2&gt;&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li
+      
+    
+    </summary>
+    
+    
+      <category term="C" scheme="http://www.chenweiqin.com/categories/C/"/>
+    
+    
+      <category term="C基础" scheme="http://www.chenweiqin.com/tags/C%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
   
   <entry>
     <title>typedef用法</title>
