@@ -74,7 +74,7 @@
     <link href="http://www.chenweiqin.com/2019/11/28/%E6%8C%87%E9%92%88/"/>
     <id>http://www.chenweiqin.com/2019/11/28/指针/</id>
     <published>2019-11-27T22:34:21.000Z</published>
-    <updated>2019-11-29T02:48:02.215Z</updated>
+    <updated>2019-12-12T08:15:45.545Z</updated>
     
     <content type="html"><![CDATA[<h1 id="什么是指针"><a href="#什么是指针" class="headerlink" title="什么是指针"></a>什么是指针</h1><p>2018年10月25日 - 此系列文章我们开始聊一些软件开发人员如何开始动手写一些自己项目(<em>Side</em> <em>Project</em>)的思路与方法,以及过程中可能需要准备的知识,并分享一些相关的资源给..</p><h1 id="指针与数组关系"><a href="#指针与数组关系" class="headerlink" title="指针与数组关系"></a>指针与数组关系</h1><h2 id="通过指针写读取数组"><a href="#通过指针写读取数组" class="headerlink" title="通过指针写读取数组"></a>通过指针写读取数组</h2><p>2018年10月25日 - 此系列文章我们开始聊一些软件开发人员如何开始动手写一些自己项目(<em>Side</em> <em>Project</em>)的思路与方法,以及过程中可能需要准备的知识,并分享一些相关的资源给…</p><h2 id="通过指针操作二维数组"><a href="#通过指针操作二维数组" class="headerlink" title="通过指针操作二维数组"></a>通过指针操作二维数组</h2><p>2018年10月25日 - 此系列文章我们开始聊一些软件开发人员如何开始动手写一些自己项目(<em>Side</em> <em>Project</em>)的思路与方法,以及过程中可能需要准备的知识,并分享一些相关的资源给…</p><h1 id="指针与函数"><a href="#指针与函数" class="headerlink" title="指针与函数"></a>指针与函数</h1><h2 id="指针作为函数参数时"><a href="#指针作为函数参数时" class="headerlink" title="指针作为函数参数时"></a>指针作为函数参数时</h2><h2 id="指针作为函数返回值"><a href="#指针作为函数返回值" class="headerlink" title="指针作为函数返回值"></a>指针作为函数返回值</h2><h2 id="指针的运算"><a href="#指针的运算" class="headerlink" title="指针的运算"></a>指针的运算</h2><p><img src="%5Cimg%5Cc%5Css.jpg" alt=""></p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="\img\c\tt.jpg" alt="" title="">                </div>                <div class="image-caption"></div>            </figure>]]></content>
     
@@ -88,20 +88,12 @@
     </summary>
     
     
-      <category term="c" scheme="http://www.chenweiqin.com/categories/c/"/>
+      <category term="C" scheme="http://www.chenweiqin.com/categories/C/"/>
     
-      <category term="计算机网络" scheme="http://www.chenweiqin.com/categories/c/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
     
-      <category term="数据库" scheme="http://www.chenweiqin.com/categories/c/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
-      <category term="php" scheme="http://www.chenweiqin.com/categories/c/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E6%95%B0%E6%8D%AE%E5%BA%93/php/"/>
-    
-      <category term="c++" scheme="http://www.chenweiqin.com/categories/c/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E6%95%B0%E6%8D%AE%E5%BA%93/php/c/"/>
-    
+      <category term="C基础" scheme="http://www.chenweiqin.com/tags/C%E5%9F%BA%E7%A1%80/"/>
     
       <category term="指针" scheme="http://www.chenweiqin.com/tags/%E6%8C%87%E9%92%88/"/>
-    
-      <category term="设计模式" scheme="http://www.chenweiqin.com/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     
   </entry>
   
