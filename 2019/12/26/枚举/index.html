@@ -14,22 +14,22 @@
     
     
     
-    <title>共用体 | Weiqin&#39;Blog | I can accept failure, but I cannot accept giving up.</title>
+    <title>枚举 | Weiqin&#39;Blog | I can accept failure, but I cannot accept giving up.</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
     
     
     <meta name="keywords" content="C基础">
-    <meta name="description" content="共用体（联合体）特点  共用体union是一人能在同一个存储空间存储不同类型数据的类型 共用体所占的内存长度等于其最长成员的长度，这也是为什么把它称之为共用体的原因 同一内存段可以用来存入几种不同类型的成员，但每一瞬时只有一种起起作用 共用体变量中起作用的成员是最后一次存放的成员，在存入一个新成员后原有的成员的值会被覆盖 共用体变量的地址和它的各成员的地址都是同一地址  优点：省内存，里面的成员只">
+    <meta name="description" content="关于枚举 枚举的作用是:将变量的值一一列举出来，变量的值只限于列举出来的值的范围内。 关于定义枚举如下:  123enum 枚举名&amp;#123;   &amp;gt;枚举值列表&amp;#125;;  在枚举值表中应列出所有可用值，也称为枚举元素。枚举值是常量，不能在程序中用赋值语句再对它赋值。枚举元素本身由系统定义了一个表示序号的数值从0开始顺序定义为0，1，2 …  使用案例 12345678910111213">
 <meta name="keywords" content="C基础">
 <meta property="og:type" content="article">
-<meta property="og:title" content="共用体">
-<meta property="og:url" content="http:&#x2F;&#x2F;www.chenweiqin.com&#x2F;2019&#x2F;12&#x2F;26&#x2F;%E5%85%B1%E7%94%A8%E4%BD%93&#x2F;index.html">
+<meta property="og:title" content="枚举">
+<meta property="og:url" content="http:&#x2F;&#x2F;www.chenweiqin.com&#x2F;2019&#x2F;12&#x2F;26&#x2F;%E6%9E%9A%E4%B8%BE&#x2F;index.html">
 <meta property="og:site_name" content="Weiqin&#39;Blog">
-<meta property="og:description" content="共用体（联合体）特点  共用体union是一人能在同一个存储空间存储不同类型数据的类型 共用体所占的内存长度等于其最长成员的长度，这也是为什么把它称之为共用体的原因 同一内存段可以用来存入几种不同类型的成员，但每一瞬时只有一种起起作用 共用体变量中起作用的成员是最后一次存放的成员，在存入一个新成员后原有的成员的值会被覆盖 共用体变量的地址和它的各成员的地址都是同一地址  优点：省内存，里面的成员只">
+<meta property="og:description" content="关于枚举 枚举的作用是:将变量的值一一列举出来，变量的值只限于列举出来的值的范围内。 关于定义枚举如下:  123enum 枚举名&amp;#123;   &amp;gt;枚举值列表&amp;#125;;  在枚举值表中应列出所有可用值，也称为枚举元素。枚举值是常量，不能在程序中用赋值语句再对它赋值。枚举元素本身由系统定义了一个表示序号的数值从0开始顺序定义为0，1，2 …  使用案例 12345678910111213">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-12-26T14:23:46.929Z">
+<meta property="og:updated_time" content="2019-12-26T14:56:45.291Z">
 <meta name="twitter:card" content="summary">
     
         <link rel="alternate" type="application/atom+xml" title="Weiqin&#39;Blog" href="/atom.xml">
@@ -111,7 +111,7 @@
         <a href="javascript:;" target="_blank" rel="noopener" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">共用体</div>
+        <div class="flex-col header-title ellipsis">枚举</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" target="_blank" rel="noopener" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -133,10 +133,10 @@
 <header class="content-header post-header">
 
     <div class="container fade-scale">
-        <h1 class="title">共用体</h1>
+        <h1 class="title">枚举</h1>
         <h5 class="subtitle">
             
-                <time datetime="2019-12-26T10:19:11.000Z" itemprop="datePublished" class="page-time">
+                <time datetime="2019-12-26T14:35:07.000Z" itemprop="datePublished" class="page-time">
   2019-12-26
 </time>
 
@@ -158,18 +158,18 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#共用体（联合体）特点"><span class="post-toc-number">1.</span> <span class="post-toc-text">共用体（联合体）特点</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#共用体的使用"><span class="post-toc-number">2.</span> <span class="post-toc-text">共用体的使用</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#关于枚举"><span class="post-toc-number">1.</span> <span class="post-toc-text">关于枚举</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用案例"><span class="post-toc-number">2.</span> <span class="post-toc-text">使用案例</span></a></li></ol>
         </nav>
     </aside>
 
 
-<article id="post-共用体"
+<article id="post-枚举"
   class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
-        <h1 class="post-card-title">共用体</h1>
+        <h1 class="post-card-title">枚举</h1>
         <div class="post-meta">
-            <time class="post-time" title="2019-12-26 18:19:11" datetime="2019-12-26T10:19:11.000Z"  itemprop="datePublished">2019-12-26</time>
+            <time class="post-time" title="2019-12-26 22:35:07" datetime="2019-12-26T14:35:07.000Z"  itemprop="datePublished">2019-12-26</time>
 
             
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/C/">C</a></li></ul>
@@ -184,19 +184,16 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <h3 id="共用体（联合体）特点"><a href="#共用体（联合体）特点" class="headerlink" title="共用体（联合体）特点"></a>共用体（联合体）特点</h3><blockquote>
-<ol>
-<li>共用体union是一人能在同一个存储空间存储不同类型数据的类型</li>
-<li>共用体所占的内存长度等于其最长成员的长度，这也是为什么把它称之为共用体的原因</li>
-<li>同一内存段可以用来存入几种不同类型的成员，但每一瞬时只有一种起起作用</li>
-<li>共用体变量中起作用的成员是最后一次存放的成员，在存入一个新成员后原有的成员的值会被覆盖</li>
-<li>共用体变量的地址和它的各成员的地址都是同一地址</li>
-</ol>
-<p>优点：省内存，里面的成员只共用一块内存。缺点：只有最后一次赋值是有效的。</p>
-<p>共用体也称之为联合体</p>
+            <h2 id="关于枚举"><a href="#关于枚举" class="headerlink" title="关于枚举"></a>关于枚举</h2><blockquote>
+<p>枚举的作用是:将变量的值一一列举出来，变量的值只限于列举出来的值的范围内。</p>
+<p>关于定义枚举如下:</p>
+<blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> 枚举名&#123;</span><br><span class="line">   &gt;枚举值列表</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 </blockquote>
-<h3 id="共用体的使用"><a href="#共用体的使用" class="headerlink" title="共用体的使用"></a>共用体的使用</h3><blockquote>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">union</span> test&#123;</span><br><span class="line"><span class="keyword">unsigned</span> <span class="keyword">char</span> a;</span><br><span class="line"><span class="keyword">unsigned</span> <span class="keyword">int</span> b;</span><br><span class="line"><span class="keyword">unsigned</span> <span class="keyword">short</span> c;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">   <span class="keyword">union</span> test tmp;</span><br><span class="line">   <span class="comment">//1.所有成员的首地址是一样的</span></span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">"%p\n,%p\n,%p\n"</span>,&amp;(tmp.a),&amp;(tmp.b),&amp;(tmp.c));</span><br><span class="line">   <span class="comment">//2.共用体大小为最在成员类型的大小</span></span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">"%lu\n"</span>,<span class="keyword">sizeof</span>(<span class="keyword">union</span> test));</span><br><span class="line">   <span class="comment">//3.一个成员赋值,会影响到另外的成员</span></span><br><span class="line">   <span class="comment">//左边是高位,右边的低位</span></span><br><span class="line">   <span class="comment">//低位放低地址,高位入高地址</span></span><br><span class="line">   </span><br><span class="line">  tmp.b = <span class="number">0x44332211</span>;<span class="comment">//为了方便后的验证所有赋以十六进方式赋值</span></span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"%x\n"</span>,tmp.a);<span class="comment">//11 </span></span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"%x\n"</span>,tmp.c);<span class="comment">//2211</span></span><br><span class="line">  <span class="comment">//更改一个低位的值</span></span><br><span class="line">  tmp.a = <span class="number">0x00</span>;</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"%x\n"</span>,tmp.a);<span class="comment">//0</span></span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"%x\n"</span>,tmp.c);<span class="comment">//2200</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在枚举值表中应列出所有可用值，也称为枚举元素。<br>枚举值是常量，不能在程序中用赋值语句再对它赋值。<br>枚举元素本身由系统定义了一个表示序号的数值从0开始顺序定义为0，1，2 …</p>
+</blockquote>
+<h2 id="使用案例"><a href="#使用案例" class="headerlink" title="使用案例"></a>使用案例</h2><blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="keyword">enum</span> weekday&#123;</span><br><span class="line">sun = <span class="number">4</span>, mon, tue, wed, thu, fri, sat</span><br><span class="line">&#125; ;</span><br><span class="line"><span class="keyword">enum</span> <span class="keyword">bool</span>&#123;</span><br><span class="line">flase, <span class="literal">true</span></span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="keyword">enum</span> weekday a, b, c;<span class="comment">//这3个变量a,b,c只能使用enum weekday里面的值</span></span><br><span class="line">a = sun;</span><br><span class="line">b = mon;</span><br><span class="line">c = sat;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%d,%d,%d\n"</span>, a, b, c);<span class="comment">//4,5,10</span></span><br><span class="line"><span class="keyword">enum</span> <span class="keyword">bool</span> flag;</span><br><span class="line">flag = <span class="literal">true</span>;</span><br><span class="line"><span class="keyword">if</span> (flag == <span class="number">1</span>)&#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"flag为真\n"</span>);<span class="comment">//顺序就是从0开始的 所有会执行到这里</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 </blockquote>
 
@@ -207,12 +204,12 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2019-12-26T14:23:46.929Z" itemprop="dateUpdated">2019-12-26 22:23:46</time>
+    Last updated: <time datetime="2019-12-26T14:56:45.291Z" itemprop="dateUpdated">2019-12-26 22:56:45</time>
 </span><br>
 
 
         
-        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2019/12/26/%E5%85%B1%E7%94%A8%E4%BD%93/" target="_blank" rel="external">http://www.chenweiqin.com/2019/12/26/%E5%85%B1%E7%94%A8%E4%BD%93/</a>
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2019/12/26/%E6%9E%9A%E4%B8%BE/" target="_blank" rel="external">http://www.chenweiqin.com/2019/12/26/%E6%9E%9A%E4%B8%BE/</a>
         
     </div>
     
@@ -243,7 +240,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.chenweiqin.com/2019/12/26/%E5%85%B1%E7%94%A8%E4%BD%93/&title=《共用体》 — Weiqin'Blog&pic=http://www.chenweiqin.com/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.chenweiqin.com/2019/12/26/%E6%9E%9A%E4%B8%BE/&title=《枚举》 — Weiqin'Blog&pic=http://www.chenweiqin.com/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -253,22 +250,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.chenweiqin.com/2019/12/26/%E5%85%B1%E7%94%A8%E4%BD%93/&title=《共用体》 — Weiqin'Blog&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.chenweiqin.com/2019/12/26/%E6%9E%9A%E4%B8%BE/&title=《枚举》 — Weiqin'Blog&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.chenweiqin.com/2019/12/26/%E5%85%B1%E7%94%A8%E4%BD%93/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.chenweiqin.com/2019/12/26/%E6%9E%9A%E4%B8%BE/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《共用体》 — Weiqin'Blog&url=http://www.chenweiqin.com/2019/12/26/%E5%85%B1%E7%94%A8%E4%BD%93/&via=http://www.chenweiqin.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《枚举》 — Weiqin'Blog&url=http://www.chenweiqin.com/2019/12/26/%E6%9E%9A%E4%B8%BE/&via=http://www.chenweiqin.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.chenweiqin.com/2019/12/26/%E5%85%B1%E7%94%A8%E4%BD%93/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.chenweiqin.com/2019/12/26/%E6%9E%9A%E4%B8%BE/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -288,21 +285,14 @@
     </div>
 
     
-<nav class="post-nav flex-row flex-justify-between">
-  
-    <div class="waves-block waves-effect prev">
-      <a href="/2019/12/26/%E6%9E%9A%E4%B8%BE/" id="post-prev" class="post-nav-link">
-        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">枚举</h4>
-      </a>
-    </div>
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
   
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2019/12/25/%E7%BB%86%E8%AF%B4%E7%BB%93%E6%9E%84%E4%BD%93/" id="post-next" class="post-nav-link">
+      <a href="/2019/12/26/%E5%85%B1%E7%94%A8%E4%BD%93/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">细说结构体</h4>
+        <h4 class="title">共用体</h4>
       </a>
     </div>
   
@@ -405,7 +395,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.chenweiqin.com/2019/12/26/%E5%85%B1%E7%94%A8%E4%BD%93/&title=《共用体》 — Weiqin'Blog&pic=http://www.chenweiqin.com/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.chenweiqin.com/2019/12/26/%E6%9E%9A%E4%B8%BE/&title=《枚举》 — Weiqin'Blog&pic=http://www.chenweiqin.com/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -415,22 +405,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.chenweiqin.com/2019/12/26/%E5%85%B1%E7%94%A8%E4%BD%93/&title=《共用体》 — Weiqin'Blog&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.chenweiqin.com/2019/12/26/%E6%9E%9A%E4%B8%BE/&title=《枚举》 — Weiqin'Blog&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.chenweiqin.com/2019/12/26/%E5%85%B1%E7%94%A8%E4%BD%93/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.chenweiqin.com/2019/12/26/%E6%9E%9A%E4%B8%BE/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《共用体》 — Weiqin'Blog&url=http://www.chenweiqin.com/2019/12/26/%E5%85%B1%E7%94%A8%E4%BD%93/&via=http://www.chenweiqin.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《枚举》 — Weiqin'Blog&url=http://www.chenweiqin.com/2019/12/26/%E6%9E%9A%E4%B8%BE/&via=http://www.chenweiqin.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.chenweiqin.com/2019/12/26/%E5%85%B1%E7%94%A8%E4%BD%93/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.chenweiqin.com/2019/12/26/%E6%9E%9A%E4%B8%BE/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -441,7 +431,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;" target="_self"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACqElEQVR42u3aQY4iMRAEQP7/6d3zanYgs8oeGCn6hETT7fDBVaT9eMTXn2+ur/ckz0k+J288duHh4eEdGnryyu++zWFfn/B8hPUU4OHh4V3jtQPaF5L2Xe09eHh4eJ/Ma5vgWbuMh4eH93t5bXOct+BJ446Hh4f3Obz20W0BaGFvyFrw8PDwLuwifc7nK/t7eHh4eOtd9bZIbLbTnj9tOFo8PDy8C7z2sFS+NCdTsylCxTjx8PDwjvLapXlzLGB/5ROHh4eHd4/XLsqzBvfA9n9QQg5kKnh4eHjBnaca3E140Tbu+SYZHh4e3g1eHiLkq24CaAOO2Ujw8PDwbvDaJTgJJvKtrDy2SCaornt4eHh4I14bE+wX93aCZjEKHh4e3j1eHs4mU7CJEvKJKP4A4OHh4V3j5eUhKQntUYO2cV+FEXh4eHhrXn4IYNbU5o3yqWn6z2/x8PDwLvBmMesGMDuwtdmuw8PDw/sZ3uyaRQ+b+6Pf4uHh4R3i7SPaPLyYRbqrO/Hw8PAu82YnDpJlup2sfOl/8UY8PDy8C7znX9Rb9aMp2BeYF8UDDw8P7wJvs8nUblzloXASDbdTgIeHh3eK12LyMLctIXkRKvB4eHh413ibJrgNbdvGPSkhL8IIPDw8vGu8JG5oj1XljXVeoooYAg8PD+8aLw8XZhtjbWHIiwoeHh7ee3nthlYbEERNcJs95/t7eHh4eGveLJydFYBZbDE7uPDPmTI8PDy8o7yz21H7QW9C5CEMDw8Pb8Rrg9RZw51MRHt8of7HgIeHh3eU14YLeex7dukfRhJ4eHh4H8ZLNqhmg56FIIcLAx4eHt5RXv6cvFGeHU6NzpTh4eHhHeW1L2jDhfaQVttkH8ha8PDw8LoE9Vhre3bbLIc9NhceHh5e+u1fdjg/pDehAZoAAAAASUVORK5CYII=" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACMklEQVR42u3aS27EIBBFUe9/02TaUmRyXxUdCbiMoraD+zhShfo8D17jY7198nb/73vers73XLBkyJCxLWNM1/yez6vp/vMXxL+bDBky7mG8PX6+NfktEkbnz5rfL0OGDBlpSOXHyv6dMmTIkMGPayl+fo8MGTJkdJLY+UbfLsAty8VlyJCxIYNX3f//56/0N2TIkLEVY4SLBMda43M0lgwZMs5m8ADHj2hpw6AWcGXIkHEPo+bmaWqneUkC9NP588mQIWNDBnlwrVjGi3S1cTEZMmTcwKhtVAuXvKzPh89kyJBxD4MMNPAy2aq2JTr7yZAh4zIGH3eotT/5MTRIoWXIkHE0gxT0+VXeNqi9PtRCkCFDxqGMztb8YcFRr8SWIUPGqYzOETB4Tzjd5UMbQQtThgwZmzP6Q1oDr1q6y4dCZMiQcSqDh79aYslJvP2Jhi1kyJBxHGO+KRmwSBNdfuxDRUAZMmQczaiNc6UtTD7sxae8/sjIZciQcRwjTSCLAbE0WBYHYhkyZBzKqCWZPIDGSWn4iQwZMu5k8JIZSXf7r4mwZciQcQ9j7SedUlqc4sqQIeNQxghXrTxXOzLG+bcMGTIOZfSjdSfgkiJdcDSUIUPG0Yw0yPIhsLT03wq4MmTIuICxNn7zlmT6H6DVg5UhQ8aVjOAxjSc+HZ8MGTKuZHRCai2HRvvIkCHjAgYfueCHQgJOX9yCcpsMGTI2ZNTOXeQL8TBN9l/Q1JQhQ8Z+jB/r4EHPq36aIAAAAABJRU5ErkJggg==" alt="微信分享二维码">
 </div>
 
 

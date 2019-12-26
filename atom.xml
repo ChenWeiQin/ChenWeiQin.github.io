@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.chenweiqin.com/"/>
-  <updated>2019-12-26T10:19:11.496Z</updated>
+  <updated>2019-12-26T14:56:45.291Z</updated>
   <id>http://www.chenweiqin.com/</id>
   
   <author>
@@ -17,17 +17,58 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>共用体</title>
-    <link href="http://www.chenweiqin.com/2019/12/26/%E5%85%B1%E7%94%A8%E4%BD%93/"/>
-    <id>http://www.chenweiqin.com/2019/12/26/共用体/</id>
-    <published>2019-12-26T10:19:11.000Z</published>
-    <updated>2019-12-26T10:19:11.496Z</updated>
+    <title>枚举</title>
+    <link href="http://www.chenweiqin.com/2019/12/26/%E6%9E%9A%E4%B8%BE/"/>
+    <id>http://www.chenweiqin.com/2019/12/26/枚举/</id>
+    <published>2019-12-26T14:35:07.000Z</published>
+    <updated>2019-12-26T14:56:45.291Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="关于枚举"><a href="#关于枚举" class="headerlink" title="关于枚举"></a>关于枚举</h2><blockquote><p>枚举的作用是:将变量的值一一列举出来，变量的值只限于列举出来的值的范围内。</p><p>关于定义枚举如下:</p><blockquote><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> 枚举名&#123;</span><br><span class="line">   &gt;枚举值列表</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></blockquote><p>在枚举值表中应列出所有可用值，也称为枚举元素。<br>枚举值是常量，不能在程序中用赋值语句再对它赋值。<br>枚举元素本身由系统定义了一个表示序号的数值从0开始顺序定义为0，1，2 …</p></blockquote><h2 id="使用案例"><a href="#使用案例" class="headerlink" title="使用案例"></a>使用案例</h2><blockquote><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="keyword">enum</span> weekday&#123;</span><br><span class="line">sun = <span class="number">4</span>, mon, tue, wed, thu, fri, sat</span><br><span class="line">&#125; ;</span><br><span class="line"><span class="keyword">enum</span> <span class="keyword">bool</span>&#123;</span><br><span class="line">flase, <span class="literal">true</span></span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="keyword">enum</span> weekday a, b, c;<span class="comment">//这3个变量a,b,c只能使用enum weekday里面的值</span></span><br><span class="line">a = sun;</span><br><span class="line">b = mon;</span><br><span class="line">c = sat;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%d,%d,%d\n"</span>, a, b, c);<span class="comment">//4,5,10</span></span><br><span class="line"><span class="keyword">enum</span> <span class="keyword">bool</span> flag;</span><br><span class="line">flag = <span class="literal">true</span>;</span><br><span class="line"><span class="keyword">if</span> (flag == <span class="number">1</span>)&#123;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"flag为真\n"</span>);<span class="comment">//顺序就是从0开始的 所有会执行到这里</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></blockquote>]]></content>
     
     <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;关于枚举&quot;&gt;&lt;a href=&quot;#关于枚举&quot; class=&quot;headerlink&quot; title=&quot;关于枚举&quot;&gt;&lt;/a&gt;关于枚举&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;枚举的作用是:将变量的值一一列举出来，变量的值只限于列举出来的值的范围内。&lt;/p&gt;
+&lt;p&gt;关于定义
+      
     
     </summary>
     
     
+      <category term="C" scheme="http://www.chenweiqin.com/categories/C/"/>
+    
+    
+      <category term="C基础" scheme="http://www.chenweiqin.com/tags/C%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>共用体</title>
+    <link href="http://www.chenweiqin.com/2019/12/26/%E5%85%B1%E7%94%A8%E4%BD%93/"/>
+    <id>http://www.chenweiqin.com/2019/12/26/共用体/</id>
+    <published>2019-12-26T10:19:11.000Z</published>
+    <updated>2019-12-26T14:23:46.929Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="共用体（联合体）特点"><a href="#共用体（联合体）特点" class="headerlink" title="共用体（联合体）特点"></a>共用体（联合体）特点</h3><blockquote><ol><li>共用体union是一人能在同一个存储空间存储不同类型数据的类型</li><li>共用体所占的内存长度等于其最长成员的长度，这也是为什么把它称之为共用体的原因</li><li>同一内存段可以用来存入几种不同类型的成员，但每一瞬时只有一种起起作用</li><li>共用体变量中起作用的成员是最后一次存放的成员，在存入一个新成员后原有的成员的值会被覆盖</li><li>共用体变量的地址和它的各成员的地址都是同一地址</li></ol><p>优点：省内存，里面的成员只共用一块内存。缺点：只有最后一次赋值是有效的。</p><p>共用体也称之为联合体</p></blockquote><h3 id="共用体的使用"><a href="#共用体的使用" class="headerlink" title="共用体的使用"></a>共用体的使用</h3><blockquote><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">union</span> test&#123;</span><br><span class="line"><span class="keyword">unsigned</span> <span class="keyword">char</span> a;</span><br><span class="line"><span class="keyword">unsigned</span> <span class="keyword">int</span> b;</span><br><span class="line"><span class="keyword">unsigned</span> <span class="keyword">short</span> c;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">   <span class="keyword">union</span> test tmp;</span><br><span class="line">   <span class="comment">//1.所有成员的首地址是一样的</span></span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">"%p\n,%p\n,%p\n"</span>,&amp;(tmp.a),&amp;(tmp.b),&amp;(tmp.c));</span><br><span class="line">   <span class="comment">//2.共用体大小为最在成员类型的大小</span></span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">"%lu\n"</span>,<span class="keyword">sizeof</span>(<span class="keyword">union</span> test));</span><br><span class="line">   <span class="comment">//3.一个成员赋值,会影响到另外的成员</span></span><br><span class="line">   <span class="comment">//左边是高位,右边的低位</span></span><br><span class="line">   <span class="comment">//低位放低地址,高位入高地址</span></span><br><span class="line">   </span><br><span class="line">  tmp.b = <span class="number">0x44332211</span>;<span class="comment">//为了方便后的验证所有赋以十六进方式赋值</span></span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"%x\n"</span>,tmp.a);<span class="comment">//11 </span></span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"%x\n"</span>,tmp.c);<span class="comment">//2211</span></span><br><span class="line">  <span class="comment">//更改一个低位的值</span></span><br><span class="line">  tmp.a = <span class="number">0x00</span>;</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"%x\n"</span>,tmp.a);<span class="comment">//0</span></span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"%x\n"</span>,tmp.c);<span class="comment">//2200</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;共用体（联合体）特点&quot;&gt;&lt;a href=&quot;#共用体（联合体）特点&quot; class=&quot;headerlink&quot; title=&quot;共用体（联合体）特点&quot;&gt;&lt;/a&gt;共用体（联合体）特点&lt;/h3&gt;&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;共用体union是一人能在同一个存储空
+      
+    
+    </summary>
+    
+    
+      <category term="C" scheme="http://www.chenweiqin.com/categories/C/"/>
+    
+    
+      <category term="C基础" scheme="http://www.chenweiqin.com/tags/C%E5%9F%BA%E7%A1%80/"/>
     
   </entry>
   
