@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.chenweiqin.com/"/>
-  <updated>2019-12-26T14:56:45.291Z</updated>
+  <updated>2019-12-29T02:57:48.762Z</updated>
   <id>http://www.chenweiqin.com/</id>
   
   <author>
@@ -15,6 +15,80 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>数组</title>
+    <link href="http://www.chenweiqin.com/2019/12/29/%E6%95%B0%E7%BB%84/"/>
+    <id>http://www.chenweiqin.com/2019/12/29/数组/</id>
+    <published>2019-12-29T02:57:48.000Z</published>
+    <updated>2019-12-29T02:57:48.762Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>字符串</title>
+    <link href="http://www.chenweiqin.com/2019/12/29/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
+    <id>http://www.chenweiqin.com/2019/12/29/字符串/</id>
+    <published>2019-12-29T02:57:34.000Z</published>
+    <updated>2019-12-29T02:57:34.266Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>文件操作</title>
+    <link href="http://www.chenweiqin.com/2019/12/29/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/"/>
+    <id>http://www.chenweiqin.com/2019/12/29/文件操作/</id>
+    <published>2019-12-29T02:56:13.000Z</published>
+    <updated>2019-12-29T02:56:13.981Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>位运算</title>
+    <link href="http://www.chenweiqin.com/2019/12/29/%E4%BD%8D%E8%BF%90%E7%AE%97/"/>
+    <id>http://www.chenweiqin.com/2019/12/29/位运算/</id>
+    <published>2019-12-29T02:55:13.000Z</published>
+    <updated>2019-12-29T14:39:09.519Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="学习位运算的要点"><a href="#学习位运算的要点" class="headerlink" title="学习位运算的要点"></a>学习位运算的要点</h2><blockquote><ol><li><p>什么是位运算?</p><p>计算机最小的存储单位是字节,一个字节占8位,所谓的位运算就是对各个字节上每一个位进行运算操作. 位运算的特点是高效,如不需要第三个变量就可以实现变量交换,快速判断奇偶数</p></li><li><p>学习位运算所需知识点</p><ol><li><p>什么是二进制?</p><p>逢二进一,只有两个数字0和1,这个做的原因信号稳定,如0表示不通电,1表示通电.</p></li><li><p>什么是原码,反码,补码?</p><p>原码: 就是使用二进制来表示 unsinged int num =5; int 占4个字节,一个字节占8 位.则用二进制表示如下: 00000000 00000000 00000000 00000101  这就是5的原码</p><p>反码: 一个无符号数(即正数),它的原码,反码,补码都一样的.对于有符号(即负数)的反码=符号位不变(最高位表示符号位,所谓符号位就是标识它是正数还是负数)对原码取反(1变0,0变1)</p><p>singed int num = -5; </p><p>-5原码: 10000000 00000000 00000000 00000101 </p><p>-5原码: 1111111  11111111  11111111 11111010  就是把原码位对应的位置上把1-&gt;0,0-&gt;1</p><p>补码:负数的补码=它的反码 + 1;</p><p>-5原码: 1111111  11111111  11111111 11111011</p></li><li><p>计算机在运算过程是以什么进行运算?</p><p>都是以补码方式进行运算的</p></li><li><p>运算后的结果是补码,然后把它推成原码方式,这样才是最后的计算的结果</p></li><li><p>0的原码,反码,补码都是0</p></li><li><p>在php语言中所有的数值都有符号的</p></li></ol></li><li><p>位逻辑运算符规则</p><p>$a &amp; $b   And（按位与）  将把 $a 和 $b 中都为 1 的位设为 1。(11=&gt;1)</p><p>$a | $b    Or（按位或）     将把 $a 和 $b 中任何一个为 1 的位设为 1。(10 =&gt;1 11=&gt;1 01=&gt;1)</p><p>~ $a          Not（按位取反）将 $a 中为 0 的位设为 1，反之亦然。</p><p>$a ^ $b    Xor（按位异或）将把 $a 和 $b 中两个位上相同为0不同为1。(10 =&gt;1 11=&gt;0  01=&gt;1)</p></li><li><p>位移运算符规则</p><p>怎么区分是左移还是右移，看箭头方向。<br>$a &lt;&lt; $b  Shift left（按位左移）将 $a 中的位向左移动 $b 次（每一次移动都表示”乘以 2”）。<br>可以理解为：符号位不变，低位补0</p><p>$a &gt;&gt; $b  Shift right（按位右移）将 $a 中的位向右移动 $b 次（每一次移动都表示”除2”）。<br>可以理解为：<span style="color:red;">符号位不位，低位溢出，并用符号位补高位</span></p><p>对右移运算的结果：如果是小于0 直接取结果为0，如果大于0只取结果中整数部分。</p></li></ol></blockquote><h2 id="使用案例"><a href="#使用案例" class="headerlink" title="使用案例"></a>使用案例</h2><blockquote><p><span style="color:red">正数的原码,反码,补码都一样的, 如果运算的结果是负数则把它从补码-&gt;(-1)反码-&gt;(1-&gt;0,0-&gt;1)原码</span></p><p>练习题：<br>-3&amp;2 结果是：0<br>-3|-6 结果是：-1<br>-3^-6 结果是：8<br>-3^6 结果是：-5<br>~-3    结果是：2<br>7 &gt;&gt; 2 结果是：1      （7/2/2）<br>7 &lt;&lt; 3 结果是：56 (7 * 2^3)<br>7 &gt;&gt; 3 结果是：0    (7/2/2/2 )<br>对右移运算的结果：如果是小于0 直接取结果为0，如果大于0只取结果中整数部分。</p><p>-3 原码：10000000 00000000 00000000 00000011 （1<em>2^0 + 1</em>2^1）0 剩以任何数得0<br>-3 反码：11111111 11111111 11111111 11111100<br>-3 补码：11111111 11111111 11111111 11111101<br>2  补码：00000000 00000000 00000000 00000010<br>得到两个数的补码，就可以开始运算了<br>-3&amp;2 的结果补码是：<br>       00000000 00000000 00000000 00000000 (看它的符号位是0 表示正数，正数的原码 补码 反码都一样)<br>第二题：<br>-3 补码：11111111 11111111 11111111 11111101<br>-6 补码：<br>                10000000 00000000 00000000 00000110<br>                11111111 11111111 11111111 11111001 (+1 逢二进一)<br>                11111111 11111111 11111111 11111010 </p><p>-3|-6后的补码：<br>       11111111 11111111 11111111 11111111（看的符号是1 表示是负数，这个时候过程是 负数补码 推出它的原码）<br>       11111111 11111111 11111111 11111111 =》反码（-1， 通过加1变成补码，所有这里减1变成反码）<br>       11111111 11111111 11111111 11111110 =》 原码（1-》0 0-》1）<br>       10000000 00000000 00000000 00000001<br>-3^-6后的补码：<br>       00000000 00000000 00000000 00000111(看它的符号位是 0 表示是正数，那么正的补码 反码 原码都一样)<br>-3^6<br>-3 补码：11111111 11111111 11111111 11111101<br>6  补码：00000000 00000000 00000000 00000110<br>      11111111 11111111 11111111 11111011<br>      11111111 11111111 11111111 11111010<br>      10000000 00000000 00000000 00000101</p></blockquote><blockquote><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//奇数最低位为1,偶数最位为0 然后 &amp; 两个位为1结果才为1</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">test02</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="keyword">int</span> number = <span class="number">4</span>;</span><br><span class="line"><span class="keyword">if</span> ((number &amp; <span class="number">1</span>) == <span class="number">0</span>)</span><br><span class="line">&#123;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%d是偶数!\n"</span>,number);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%d是奇数!\n"</span>,number);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></blockquote><blockquote><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">test04</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="comment">//利用位异或特点: 两个位相同则为0,不同为1</span></span><br><span class="line"><span class="keyword">int</span> num1 = <span class="number">5</span>;</span><br><span class="line"><span class="keyword">int</span> num2 = <span class="number">9</span>;</span><br><span class="line">num1 = num1 ^ num2;</span><br><span class="line">num2 = num1 ^ num2;</span><br><span class="line">num1 = num1 ^ num2;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"num1:%d num2:%d\n"</span>,num1,num2);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;学习位运算的要点&quot;&gt;&lt;a href=&quot;#学习位运算的要点&quot; class=&quot;headerlink&quot; title=&quot;学习位运算的要点&quot;&gt;&lt;/a&gt;学习位运算的要点&lt;/h2&gt;&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;什么是位运算?&lt;/p&gt;
+&lt;p&gt;计算机最小的存储单
+      
+    
+    </summary>
+    
+    
+      <category term="C" scheme="http://www.chenweiqin.com/categories/C/"/>
+    
+    
+      <category term="C基础" scheme="http://www.chenweiqin.com/tags/C%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
   
   <entry>
     <title>枚举</title>

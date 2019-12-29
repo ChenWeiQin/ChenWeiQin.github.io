@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>位运算 | Weiqin&#39;Blog | I can accept failure, but I cannot accept giving up.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="C基础">
+    <meta name="description" content="学习位运算的要点  什么是位运算? 计算机最小的存储单位是字节,一个字节占8位,所谓的位运算就是对各个字节上每一个位进行运算操作. 位运算的特点是高效,如不需要第三个变量就可以实现变量交换,快速判断奇偶数  学习位运算所需知识点  什么是二进制? 逢二进一,只有两个数字0和1,这个做的原因信号稳定,如0表示不通电,1表示通电.  什么是原码,反码,补码? 原码: 就是使用二进制来表示 unsing">
+<meta name="keywords" content="C基础">
+<meta property="og:type" content="article">
+<meta property="og:title" content="位运算">
+<meta property="og:url" content="http:&#x2F;&#x2F;www.chenweiqin.com&#x2F;2019&#x2F;12&#x2F;29&#x2F;%E4%BD%8D%E8%BF%90%E7%AE%97&#x2F;index.html">
+<meta property="og:site_name" content="Weiqin&#39;Blog">
+<meta property="og:description" content="学习位运算的要点  什么是位运算? 计算机最小的存储单位是字节,一个字节占8位,所谓的位运算就是对各个字节上每一个位进行运算操作. 位运算的特点是高效,如不需要第三个变量就可以实现变量交换,快速判断奇偶数  学习位运算所需知识点  什么是二进制? 逢二进一,只有两个数字0和1,这个做的原因信号稳定,如0表示不通电,1表示通电.  什么是原码,反码,补码? 原码: 就是使用二进制来表示 unsing">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-12-29T14:39:09.519Z">
+<meta name="twitter:card" content="summary">
+    
+        <link rel="alternate" type="application/atom+xml" title="Weiqin&#39;Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off" target="_self">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">陈维勤</h5>
+          <a href="mailto:1018482308@qq.com" target="_blank" rel="noopener" title="1018482308@qq.com" class="mail">1018482308@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+				<i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/"  >
+				<i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/"  >
+				<i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+				<i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+				<i class="icon icon-lg icon-user"></i>
+                About
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" target="_blank" rel="noopener" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">位运算</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" target="_blank" rel="noopener" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search" target="_self">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare" target="_self">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">位运算</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-12-29T02:55:13.000Z" itemprop="datePublished" class="page-time">
+  2019-12-29
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/C/">C</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#学习位运算的要点"><span class="post-toc-number">1.</span> <span class="post-toc-text">学习位运算的要点</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用案例"><span class="post-toc-number">2.</span> <span class="post-toc-text">使用案例</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-位运算"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">位运算</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-12-29 10:55:13" datetime="2019-12-29T02:55:13.000Z"  itemprop="datePublished">2019-12-29</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/C/">C</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="学习位运算的要点"><a href="#学习位运算的要点" class="headerlink" title="学习位运算的要点"></a>学习位运算的要点</h2><blockquote>
+<ol>
+<li><p>什么是位运算?</p>
+<p>计算机最小的存储单位是字节,一个字节占8位,所谓的位运算就是对各个字节上每一个位进行运算操作. 位运算的特点是高效,如不需要第三个变量就可以实现变量交换,快速判断奇偶数</p>
+</li>
+<li><p>学习位运算所需知识点</p>
+<ol>
+<li><p>什么是二进制?</p>
+<p>逢二进一,只有两个数字0和1,这个做的原因信号稳定,如0表示不通电,1表示通电.</p>
+</li>
+<li><p>什么是原码,反码,补码?</p>
+<p>原码: 就是使用二进制来表示 unsinged int num =5; int 占4个字节,一个字节占8 位.则用二进制表示如下: 00000000 00000000 00000000 00000101  这就是5的原码</p>
+<p>反码: 一个无符号数(即正数),它的原码,反码,补码都一样的.对于有符号(即负数)的反码=符号位不变(最高位表示符号位,所谓符号位就是标识它是正数还是负数)对原码取反(1变0,0变1)</p>
+<p>singed int num = -5; </p>
+<p>-5原码: 10000000 00000000 00000000 00000101 </p>
+<p>-5原码: 1111111  11111111  11111111 11111010  就是把原码位对应的位置上把1-&gt;0,0-&gt;1</p>
+<p>补码:负数的补码=它的反码 + 1;</p>
+<p>-5原码: 1111111  11111111  11111111 11111011</p>
+</li>
+<li><p>计算机在运算过程是以什么进行运算?</p>
+<p>都是以补码方式进行运算的</p>
+</li>
+<li><p>运算后的结果是补码,然后把它推成原码方式,这样才是最后的计算的结果</p>
+</li>
+<li><p>0的原码,反码,补码都是0</p>
+</li>
+<li><p>在php语言中所有的数值都有符号的</p>
+</li>
+</ol>
+</li>
+<li><p>位逻辑运算符规则</p>
+<p>$a &amp; $b   And（按位与）  将把 $a 和 $b 中都为 1 的位设为 1。(11=&gt;1)</p>
+<p>$a | $b    Or（按位或）     将把 $a 和 $b 中任何一个为 1 的位设为 1。(10 =&gt;1 11=&gt;1 01=&gt;1)</p>
+<p>~ $a          Not（按位取反）将 $a 中为 0 的位设为 1，反之亦然。</p>
+<p>$a ^ $b    Xor（按位异或）将把 $a 和 $b 中两个位上相同为0不同为1。(10 =&gt;1 11=&gt;0  01=&gt;1)</p>
+</li>
+<li><p>位移运算符规则</p>
+<p>怎么区分是左移还是右移，看箭头方向。<br>$a &lt;&lt; $b  Shift left（按位左移）将 $a 中的位向左移动 $b 次（每一次移动都表示”乘以 2”）。<br>可以理解为：符号位不变，低位补0</p>
+<p>$a &gt;&gt; $b  Shift right（按位右移）将 $a 中的位向右移动 $b 次（每一次移动都表示”除2”）。<br>可以理解为：<span style="color:red;">符号位不位，低位溢出，并用符号位补高位</span></p>
+<p>对右移运算的结果：如果是小于0 直接取结果为0，如果大于0只取结果中整数部分。</p>
+</li>
+</ol>
+</blockquote>
+<h2 id="使用案例"><a href="#使用案例" class="headerlink" title="使用案例"></a>使用案例</h2><blockquote>
+<p><span style="color:red">正数的原码,反码,补码都一样的, 如果运算的结果是负数则把它从补码-&gt;(-1)反码-&gt;(1-&gt;0,0-&gt;1)原码</span></p>
+<p>练习题：<br>-3&amp;2 结果是：0<br>-3|-6 结果是：-1<br>-3^-6 结果是：8<br>-3^6 结果是：-5<br>~-3    结果是：2<br>7 &gt;&gt; 2 结果是：1      （7/2/2）<br>7 &lt;&lt; 3 结果是：56 (7 * 2^3)<br>7 &gt;&gt; 3 结果是：0    (7/2/2/2 )<br>对右移运算的结果：如果是小于0 直接取结果为0，如果大于0只取结果中整数部分。</p>
+<p>-3 原码：10000000 00000000 00000000 00000011 （1<em>2^0 + 1</em>2^1）0 剩以任何数得0<br>-3 反码：11111111 11111111 11111111 11111100<br>-3 补码：11111111 11111111 11111111 11111101<br>2  补码：00000000 00000000 00000000 00000010<br>得到两个数的补码，就可以开始运算了<br>-3&amp;2 的结果补码是：<br>       00000000 00000000 00000000 00000000 (看它的符号位是0 表示正数，正数的原码 补码 反码都一样)<br>第二题：<br>-3 补码：11111111 11111111 11111111 11111101<br>-6 补码：<br>                10000000 00000000 00000000 00000110<br>                11111111 11111111 11111111 11111001 (+1 逢二进一)<br>                11111111 11111111 11111111 11111010 </p>
+<p>-3|-6后的补码：<br>       11111111 11111111 11111111 11111111（看的符号是1 表示是负数，这个时候过程是 负数补码 推出它的原码）<br>       11111111 11111111 11111111 11111111 =》反码（-1， 通过加1变成补码，所有这里减1变成反码）<br>       11111111 11111111 11111111 11111110 =》 原码（1-》0 0-》1）<br>       10000000 00000000 00000000 00000001<br>-3^-6后的补码：<br>       00000000 00000000 00000000 00000111(看它的符号位是 0 表示是正数，那么正的补码 反码 原码都一样)<br>-3^6<br>-3 补码：11111111 11111111 11111111 11111101<br>6  补码：00000000 00000000 00000000 00000110<br>      11111111 11111111 11111111 11111011<br>      11111111 11111111 11111111 11111010<br>      10000000 00000000 00000000 00000101</p>
+</blockquote>
+<blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//奇数最低位为1,偶数最位为0 然后 &amp; 两个位为1结果才为1</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">test02</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="keyword">int</span> number = <span class="number">4</span>;</span><br><span class="line"><span class="keyword">if</span> ((number &amp; <span class="number">1</span>) == <span class="number">0</span>)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d是偶数!\n"</span>,number);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d是奇数!\n"</span>,number);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">test04</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="comment">//利用位异或特点: 两个位相同则为0,不同为1</span></span><br><span class="line"><span class="keyword">int</span> num1 = <span class="number">5</span>;</span><br><span class="line"><span class="keyword">int</span> num2 = <span class="number">9</span>;</span><br><span class="line">num1 = num1 ^ num2;</span><br><span class="line">num2 = num1 ^ num2;</span><br><span class="line">num1 = num1 ^ num2;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"num1:%d num2:%d\n"</span>,num1,num2);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></blockquote>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2019-12-29T14:39:09.519Z" itemprop="dateUpdated">2019-12-29 22:39:09</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2019/12/29/%E4%BD%8D%E8%BF%90%E7%AE%97/" target="_blank" rel="external">http://www.chenweiqin.com/2019/12/29/%E4%BD%8D%E8%BF%90%E7%AE%97/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://www.chenweiqin.com">
+            <img src="/img/avatar.jpg" alt="陈维勤">
+            陈维勤
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light" target="_self">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E5%9F%BA%E7%A1%80/" rel="tag">C基础</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.chenweiqin.com/2019/12/29/%E4%BD%8D%E8%BF%90%E7%AE%97/&title=《位运算》 — Weiqin'Blog&pic=http://www.chenweiqin.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信" target="_self">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.chenweiqin.com/2019/12/29/%E4%BD%8D%E8%BF%90%E7%AE%97/&title=《位运算》 — Weiqin'Blog&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.chenweiqin.com/2019/12/29/%E4%BD%8D%E8%BF%90%E7%AE%97/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《位运算》 — Weiqin'Blog&url=http://www.chenweiqin.com/2019/12/29/%E4%BD%8D%E8%BF%90%E7%AE%97/&via=http://www.chenweiqin.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.chenweiqin.com/2019/12/29/%E4%BD%8D%E8%BF%90%E7%AE%97/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle" target="_self">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/12/29/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">文件操作</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/12/26/%E6%9E%9A%E4%B8%BE/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">枚举</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;" target="_self"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+   <div class="top">
+        <!--
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+ -->
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license noopener" href="https://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+
+    <div class="bottom">
+        <p><span>陈维勤 &copy; 2015 - 2019</span>
+            <span>
+                
+                <a href="http://www.miitbeian.gov.cn/" target="_blank"><a href="http://beian.miit.gov.cn" target="_blank">粤ICP备18037096号</a></a><br>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light" target="_self"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.chenweiqin.com/2019/12/29/%E4%BD%8D%E8%BF%90%E7%AE%97/&title=《位运算》 — Weiqin'Blog&pic=http://www.chenweiqin.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信" target="_self">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.chenweiqin.com/2019/12/29/%E4%BD%8D%E8%BF%90%E7%AE%97/&title=《位运算》 — Weiqin'Blog&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.chenweiqin.com/2019/12/29/%E4%BD%8D%E8%BF%90%E7%AE%97/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《位运算》 — Weiqin'Blog&url=http://www.chenweiqin.com/2019/12/29/%E4%BD%8D%E8%BF%90%E7%AE%97/&via=http://www.chenweiqin.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.chenweiqin.com/2019/12/29/%E4%BD%8D%E8%BF%90%E7%AE%97/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" target="_self"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACrklEQVR42u3a207DMBAFwP7/TxeJJySa9OzFokiTJ9QGOxMkrznrxyO+nt/X/Se/v/155d9ezXJ/5+jCw8PDaz361XU1zf3DXY2Qjzm/Hw8PD+80b74oP+Pr/kUkJSR5Zjw8PLxP4OXb6K0tOx4eHt5/5+VhRD5CdRuNh4eH9zm8ZJokkqhuoKuBxcGsBQ8PDy/mVbe8n/Dzwf4eHh4e3lLwmi+7vVIx34K/mAUPDw/vAG83fi0EBK3DW8m2+2C6jIeHh7carc5LS35P/grw8PDwTvAmi3U+ZR7+3heqPFYun1PAw8PDi3nJkjqPD3qBQn5/ORfBw8PDG/N6xaDX/u+N0LsHDw8P7zTvfiGuNvirpPxwQKGRhoeHh3eAVx10Eqf2Gl3VF/Hiczw8PLxjvK2YYGtbPDn4hYeHh3eOF/1LH7+Urbmqm+83m2k8PDy8Vd5kmmRB78UWvdHejImHh4e3yuu1/HvRwCRiyAORwkPg4eHhFXm9pbkaRlQDjl4j7bIk4OHh4a3ykl+oFobq4a2odg029Hh4eHi7vF5uMd9YJy2xycvFw8PDO8fbaoNthRp5oSq3vvDw8PCWeL22/bwvv9XuWj4ugIeHh1db4R9Jmz8JcJPxk+Cj91LePAkeHh7eAV41MM2nKZz/GoS/o78hHh4e3oDXC1gTTLVg5E/1qF54eHh4A965BlV+xCq/f1QA8PDw8I7x5p9UQ41RONvLqvHw8PBavGfxyn+3eoBgq/zg4eHhneYtVJVivDsfbR4K4+Hh4c15yRKfbKCrMUH1+GkzpMDDw8M7xssb9nP2Wvs/Lwx4eHh4f8qbx7g5tbqBxsPDw/s03qRlNTlEdX/Pm2fDw8PDO8brNaXmRw0mJScKhfHw8PAO8KoNsCRKyF/ivDxMIgw8PDy8Iu8LK3peky1IeTMAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'php -爱生活,爱技术！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'php -爱生活,爱技术！';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
