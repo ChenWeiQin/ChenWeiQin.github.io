@@ -20,13 +20,16 @@
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="">
-    <meta property="og:type" content="article">
+    <meta name="keywords" content="C基础">
+    <meta name="description" content="概述 文本文件与二进制文件区别?各有什么优势? 文体文件方便人的对它的识别,每一个字符对应ascii码或者unicode,但加载进内存之前必须转换成二进制码,因为计算机只识别二进制.特别说明 utf-8是unicode其中一编码方式.总结如下: 文本文件:  基于字符编码,常见编码有asill unicode 一般可以使用文本编辑器直接打开 每一个字符对应一个asill或unicode编码存储如数">
+<meta name="keywords" content="C基础">
+<meta property="og:type" content="article">
 <meta property="og:title" content="文件操作">
 <meta property="og:url" content="http:&#x2F;&#x2F;www.chenweiqin.com&#x2F;2019&#x2F;12&#x2F;29&#x2F;%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C&#x2F;index.html">
 <meta property="og:site_name" content="Weiqin&#39;Blog">
+<meta property="og:description" content="概述 文本文件与二进制文件区别?各有什么优势? 文体文件方便人的对它的识别,每一个字符对应ascii码或者unicode,但加载进内存之前必须转换成二进制码,因为计算机只识别二进制.特别说明 utf-8是unicode其中一编码方式.总结如下: 文本文件:  基于字符编码,常见编码有asill unicode 一般可以使用文本编辑器直接打开 每一个字符对应一个asill或unicode编码存储如数">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-12-29T02:56:13.981Z">
+<meta property="og:updated_time" content="2020-01-07T08:17:32.755Z">
 <meta name="twitter:card" content="summary">
     
         <link rel="alternate" type="application/atom+xml" title="Weiqin&#39;Blog" href="/atom.xml">
@@ -138,6 +141,8 @@
 </time>
 
 
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/C/">C</a></li></ul>
+
             
         </h5>
     </div>
@@ -150,6 +155,13 @@
 
 <div class="container body-wrap">
     
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#概述"><span class="post-toc-number">1.</span> <span class="post-toc-text">概述</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#文件读写操作"><span class="post-toc-number">2.</span> <span class="post-toc-text">文件读写操作</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#文件打开与关闭"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">文件打开与关闭</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#获取与文件相关的属性"><span class="post-toc-number">3.</span> <span class="post-toc-text">获取与文件相关的属性</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#文件删除及重命名"><span class="post-toc-number">4.</span> <span class="post-toc-text">文件删除及重命名</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#什么是文件缓冲区及冲刷缓存区"><span class="post-toc-number">5.</span> <span class="post-toc-text">什么是文件缓冲区及冲刷缓存区</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#windows和linux文本文件的区别"><span class="post-toc-number">6.</span> <span class="post-toc-text">windows和linux文本文件的区别</span></a></li></ol>
+        </nav>
+    </aside>
+
 
 <article id="post-文件操作"
   class="post-article article-type-post fade" itemprop="blogPost">
@@ -160,6 +172,8 @@
             <time class="post-time" title="2019-12-29 10:56:13" datetime="2019-12-29T02:56:13.000Z"  itemprop="datePublished">2019-12-29</time>
 
             
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/C/">C</a></li></ul>
+
 
 
             
@@ -170,7 +184,99 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            
+            <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><blockquote>
+<p>文本文件与二进制文件区别?各有什么优势?</p>
+<p>文体文件方便人的对它的识别,每一个字符对应ascii码或者unicode,但加载进内存之前必须转换成二进制码,因为计算机只识别二进制.特别说明 utf-8是unicode其中一编码方式.总结如下:</p>
+<p>文本文件:</p>
+<ol>
+<li>基于字符编码,常见编码有asill unicode</li>
+<li>一般可以使用文本编辑器直接打开</li>
+<li>每一个字符对应一个asill或unicode编码存储如数字5678存成00110101 00110110 00110111 00111000</li>
+</ol>
+<p>二进制文件:</p>
+<ol>
+<li>基于<span style="color:red;">值</span>编码</li>
+<li>把内存中的按内存中的存储式原样输出在磁盘上,即以二进制方式存储在文件中,在很多编辑器会把二进制转化十六进制显示,方便对二进制的阅读</li>
+<li>数字5678 00010110 00101110</li>
+</ol>
+<p>总结: 同样的数据如果以二进制存储数据少,以文本方式存储数据量大,二进制方便计算机的运算,因为不需要编码转换过程.而文件方式存储需要转换,位它方便人对的它阅读</p>
+<p>磁盘文件与设备文件?</p>
+<p>二进制文件与文本文件都属于磁盘,因为它都是保存在磁盘中,而显示器,键盘等输出输出设备会抽象出与硬件对应的设备文件,在计算机的操作系统中一切皆文件,往浏览器中输内容即是向往之对应的设备文件输出内容.</p>
+<p>区分开文件内部指针与通过fopen打开的文件的指针</p>
+<p>通过fopen打开文件得到文件指针,打开此文件在内部又维持一个指针,可操作范围是每调用getchar函数 文件内部指针移动一步,使用rewind函数把文件内部指向文件的头部,使用fseek函数可以把内部指针定位到文件中的任意位置,然后读取里面的数据.</p>
+<p>学习文件操作的要点如下:</p>
+<ol>
+<li><p>打开文件的模式有那几种各有什么区别?</p>
+</li>
+<li><p>打开的文件后 读取/写入 数据又有几种方式?</p>
+<p>按字符读写,按行读写,按数据块读写</p>
+</li>
+<li><p>如何判断文件是否结束,有几种判断方式,为什么使用EOF不能用来判断二进制文件?</p>
+<p>对于ascill文件值范围只有1~127不可以出现-1(EOF对应的值为-1),所以使用EOF可以判断以ascill编码的文件.而在二进制文件使用EOF则不可行了,则系统提供了更有效的函数通过feof函数来判断, ftell函数获取内部指针当前的位置,它是相对于文件打开的模式的.如打开文件模式是a ,接着fseek(fp,0,SEEK_END), 再次调用ftell函数如果返回是 10  即表示当前内部指针位打开位置(可能在文件头部也有可以是文件末尾要看打开文件时的模式)偏移10个字符位置</p>
+</li>
+</ol>
+</blockquote>
+<h2 id="文件读写操作"><a href="#文件读写操作" class="headerlink" title="文件读写操作"></a>文件读写操作</h2><blockquote>
+<h3 id="文件打开与关闭"><a href="#文件打开与关闭" class="headerlink" title="文件打开与关闭"></a>文件打开与关闭</h3><blockquote>
+<p>一个进程可以打开的文件数是有限的,不能超过65535个,所以在打开文件后如果不使用,应即时把它关闭了,以免不必要的浪费.</p>
+<blockquote>
+<p>#include &lt;stdio.h&gt;<br>FILE * fopen(const char * filename, const char * mode);<br>功能：打开文件<br>参数：<br>filename：需要打开的文件名，根据需要加上路径,为兼容写法都使用 “/“作为分隔符<br>mode：打开文件的模式设置<br>返回值：<br>成功：文件指针<br>失败：NULL</p>
+<p>const char * filename : 即使用双引号引起来 “xxxx” 就是表示字符串常量是一种指针类型</p>
+</blockquote>
+<blockquote>
+<p>打开的文件模式:</p>
+<p>r(read)只读,w(write)只写(如果不存在则会自动创建),a(append)在末尾追加(如果不存在则自动创建)</p>
+<p>‘+’ 组合上它表示能读能写了</p>
+<p>b表示以二进制文件方式打开,只在windows系统有效,在类linux(unix)系统中加b与不加b是一样的,b这个模式主要是为解决类linux 与windows行结束符不同问题,在 windows平台下,以文本方式打开都是以\r\n</p>
+<p>在windows 平台下,以文件方式打开文件,不加b</p>
+<p>当读取文件的时候,系统会所有的 \r\n 转换成\n</p>
+<p>当写入文件时时候,系统会把 \n转换成 \r\n (兼容做法一般加上b)</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<h2 id="获取与文件相关的属性"><a href="#获取与文件相关的属性" class="headerlink" title="获取与文件相关的属性"></a>获取与文件相关的属性</h2><blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在系统中给文件属性的存储分配了定义好结构体</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">stat</span> &#123;</span></span><br><span class="line"><span class="keyword">dev_t</span>         st_dev;         <span class="comment">//文件的设备编号</span></span><br><span class="line"><span class="keyword">ino_t</span>         st_ino;          <span class="comment">//节点</span></span><br><span class="line"><span class="keyword">mode_t</span>        st_mode;   <span class="comment">//文件的类型和存取的权限</span></span><br><span class="line"><span class="keyword">nlink_t</span>       st_nlink;     <span class="comment">//连到该文件的硬连接数目，刚建立的文件值为1</span></span><br><span class="line"><span class="keyword">uid_t</span>         st_uid;         <span class="comment">//用户ID</span></span><br><span class="line"><span class="keyword">gid_t</span>         st_gid;         <span class="comment">//组ID</span></span><br><span class="line"><span class="keyword">dev_t</span>         st_rdev;      <span class="comment">//(设备类型)若此文件为设备文件，则为其设备编号</span></span><br><span class="line"><span class="keyword">off_t</span>         st_size;        <span class="comment">//文件字节数(文件大小)</span></span><br><span class="line"><span class="keyword">unsigned</span> <span class="keyword">long</span> st_blksize;   <span class="comment">//块大小(文件系统的I/O 缓冲区大小)</span></span><br><span class="line"><span class="keyword">unsigned</span> <span class="keyword">long</span> st_blocks;    <span class="comment">//块数</span></span><br><span class="line"><span class="keyword">time_t</span>        st_atime;     <span class="comment">//最后一次访问时间(如对文件读取操作)</span></span><br><span class="line"><span class="keyword">time_t</span>        st_mtime;    <span class="comment">//最后一次修改时间</span></span><br><span class="line"><span class="keyword">time_t</span>        st_ctime;     <span class="comment">//最后一次改变时间(指属性,如用户的gid uid 发生了改变了)</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&gt;<span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/types.h&gt;</span></span></span><br><span class="line">&gt;<span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/stat.h&gt;</span></span></span><br><span class="line">&gt;<span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line">&gt;<span class="comment">//使用案例如下</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> **args)</span></span>&#123; <span class="comment">//第一个参数是参数个数,第二个参数是参数的值</span></span><br><span class="line"><span class="keyword">if</span> (argc &lt; <span class="number">2</span>)</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">stat</span> <span class="title">st</span> = &#123;</span> <span class="number">0</span> &#125;;<span class="comment">//预先定义struct stat </span></span><br><span class="line">stat(args[<span class="number">1</span>], &amp;st);<span class="comment">//然后再赋值</span></span><br><span class="line"><span class="keyword">int</span> <span class="built_in">size</span> = st.st_size;<span class="comment">//得到结构体中的成员变量</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%d\n"</span>, <span class="built_in">size</span>);</span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+</blockquote>
+<h2 id="文件删除及重命名"><a href="#文件删除及重命名" class="headerlink" title="文件删除及重命名"></a>文件删除及重命名</h2><blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">remove</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span>* pathname)</span></span>;</span><br><span class="line">&gt;<span class="comment">/*</span></span><br><span class="line"><span class="comment">&gt;功能:删除文件</span></span><br><span class="line"><span class="comment">&gt;参数:带文件路径及文件名,以字符串常方式输入</span></span><br><span class="line"><span class="comment">&gt;返回值:0成功 -1失败</span></span><br><span class="line"><span class="comment">&gt;*/</span></span><br><span class="line">&gt;<span class="built_in">remove</span>(<span class="string">"/www/html/index.php"</span>);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;<span class="function"><span class="keyword">int</span> <span class="title">rename</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span>* src, <span class="keyword">const</span> <span class="keyword">char</span>* dest)</span></span>;</span><br><span class="line">&gt;<span class="comment">/*</span></span><br><span class="line"><span class="comment">&gt;功能:移动文件</span></span><br><span class="line"><span class="comment">&gt;参数: src原文件(字符串常量), dest目标文件</span></span><br><span class="line"><span class="comment">&gt;返回值: 0成功 -1失败 </span></span><br><span class="line"><span class="comment">&gt;*/</span></span><br><span class="line">&gt;rename(<span class="string">"/www/html/index.php"</span>,<span class="string">"/www/html/index2.php"</span>);</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h2 id="什么是文件缓冲区及冲刷缓存区"><a href="#什么是文件缓冲区及冲刷缓存区" class="headerlink" title="什么是文件缓冲区及冲刷缓存区"></a>什么是文件缓冲区及冲刷缓存区</h2><blockquote>
+<p>对一个大文件复为例,如果底层实现过程是从原文件中读取一行,接着往目标文件中写入一行,显示这样的效率是很低的.为了提速先把写入到某一段内存空间中,等这段内存载满后再一次性把写入文件中,这样做既减少对文件写入次数,同步写入速度很提升,因为数据往内存写肯定比在磁盘中写更快.我们把系统自动为开启的这段内容称之文件缓存区.实际就是做cache</p>
+<p>对文件的读写都会存 缓冲区, 即输入缓冲区和输出缓冲区</p>
+<ul>
+<li>磁盘文件，一般保存在硬盘、U盘等掉电不丢失的磁盘设备中，在需要时调入内存,然后再从内存调入到寄存器中,数据才被操作</li>
+<li>在内存中对文件进行编辑处理后，保存到磁盘中</li>
+<li>程序与磁盘之间交互，不是立即完成，系统或程序可根据需要设置缓冲区，以提高存取效率</li>
+</ul>
+</blockquote>
+<blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">fflush</span><span class="params">(FILE *stream)</span></span>;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">功能：更新缓冲区，让缓冲区的数据立马写到文件中。</span></span><br><span class="line"><span class="comment">参数：</span></span><br><span class="line"><span class="comment">stream：文件指针</span></span><br><span class="line"><span class="comment">返回值：</span></span><br><span class="line"><span class="comment">成功：0，失败：-1</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">在我之前写php程序时,是可以对缓存进行开启和关闭操作的.如对大文件读取当缓冲区的数达到一定量时最好把数据冲刷,防止内存溢出.详情php ob_flush 系列函数</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<h2 id="windows和linux文本文件的区别"><a href="#windows和linux文本文件的区别" class="headerlink" title="windows和linux文本文件的区别"></a>windows和linux文本文件的区别</h2><blockquote>
+<ol>
+<li><p>b是安全二进制模式的意思，b只是在Windows有效，在Linux用r和r+b的结果是一样的</p>
+</li>
+<li><p>Unix和Linux下所有的文本文件行都是\n结尾，而Windows所有的文本文件行都是\r\n结尾</p>
+</li>
+<li><p>在Windows平台下，以“文本”方式打开文件，不加b：</p>
+<blockquote>
+<p>当读取文件的时候，系统会将所有的 “\r\n” 转换成 “\n”</p>
+<p>当写入文件的时候，系统会将 “\n” 转换成 “\r\n” 写入</p>
+<p>但是如果是以”二进制”方式打开文件，则读或写都不会进行这样的转换</p>
+</blockquote>
+</li>
+</ol>
+<p>在Unix/Linux平台下，“文本”与“二进制”模式没有区别，”\r\n” 作为两个字符原样输入输出</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&gt;<span class="comment">//判断文本文件是linux还是windows系统下生成的</span></span><br><span class="line">&gt;<span class="comment">//实现思路打开读取其中一行,判断是它的换行符</span></span><br><span class="line">&gt;<span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line">&gt;<span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> **args)</span></span>&#123;</span><br><span class="line"><span class="keyword">if</span> (argc &lt; <span class="number">2</span>)</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">FILE *p = fopen(args[<span class="number">1</span>], <span class="string">"rb"</span>);</span><br><span class="line"><span class="keyword">if</span> (!p)</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"><span class="keyword">char</span> a[<span class="number">1024</span>] = &#123; <span class="number">0</span> &#125;;</span><br><span class="line">fgets(a, <span class="keyword">sizeof</span>(a), p);</span><br><span class="line"><span class="keyword">int</span> len = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">while</span> (a[len])&#123;</span><br><span class="line">	<span class="keyword">if</span> (a[len] == <span class="string">'\n'</span>)&#123;</span><br><span class="line">		<span class="keyword">if</span> (a[len - <span class="number">1</span>] == <span class="string">'\r'</span>)&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"windows file\n"</span>);</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"linux file\n"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	len++;</span><br><span class="line">&#125;</span><br><span class="line">fclose(p);</span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&gt;&#125;</span><br></pre></td></tr></table></figure>
+
+</blockquote>
+
         </div>
 
         <blockquote class="post-copyright">
@@ -178,7 +284,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2019-12-29T02:56:13.981Z" itemprop="dateUpdated">2019-12-29 10:56:13</time>
+    Last updated: <time datetime="2020-01-07T08:17:32.755Z" itemprop="dateUpdated">2020-01-07 16:17:32</time>
 </span><br>
 
 
@@ -204,6 +310,8 @@
 
         <div class="post-footer">
             
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E5%9F%BA%E7%A1%80/" rel="tag">C基础</a></li></ul>
+
 
             
 <div class="page-share-wrap">
@@ -354,7 +462,7 @@
     </div>
 
     <div class="bottom">
-        <p><span>陈维勤 &copy; 2015 - 2019</span>
+        <p><span>陈维勤 &copy; 2015 - 2020</span>
             <span>
                 
                 <a href="http://www.miitbeian.gov.cn/" target="_blank"><a href="http://beian.miit.gov.cn" target="_blank">粤ICP备18037096号</a></a><br>
